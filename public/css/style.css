@@ -1,24 +1,28 @@
 body {
     margin: 0;
     color: #6a6f8c;
-
     background-image: url("https://m-moser.imgix.net/uploads/2017_12/VMware_Bangalore_10-132_Reception_Seating_02.jpg?auto=format&w=1200");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     font: 600 16px/18px 'Open Sans', sans-serif;
-    
 }
 
 .login-box {
     width: 100%;
     margin: auto;
+    /* margin: 20px 0px 0px 15px; */
+    /* padding : 0px 0px 0px 15px; */
     max-width: 525px;
-    min-height: 670px;
+    min-height: 615px;
+    /* min-height: 650px; */
     position: relative;
-    background: url(https://www.seekpng.com/png/detail/243-2432355_vmware-logo-transparent.png) no-repeat center;
+    /* background: url(https://www.seekpng.com/png/detail/243-2432355_vmware-logo-transparent.png) no-repeat center; */
+    background: url(https://diginomica.com/sites/default/files/images/2015-01/vmware-logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19)
 }
 
@@ -190,7 +194,7 @@ a {
 
 .hr {
     height: 2px;
-    margin: 60px 0 50px 0;
+    margin: 20px 0 20px 0;
     background: rgba(255, 255, 255, .2)
 }
 
@@ -200,7 +204,7 @@ a {
 
 .card {
     width: 500px;
-    left: 100px
+    left: 20px
 }
 
 ::placeholder {

@@ -20,7 +20,7 @@ app.use('/signup',signup);
 app.set('views','./views');
 app.set('view engine','ejs')
 app.get("/",(req,res)=>{
-        res.render('index1',{error:"",errorsign:""});
+        res.render('signup_signin',{error:"",errorsign:""});
 });
 app.listen(port,()=>{
     console.log("Conenction established with the required port number");
