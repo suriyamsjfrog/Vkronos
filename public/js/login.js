@@ -2,17 +2,24 @@ const express=require("express");
 const logincheck=require("../../models/logincheck");
 const validCred=require("../../public/js/validcred");
 const jwt=require("jsonwebtoken");
+const auth=require("../../utils/auth");
 const bcrypt=require("bcrypt");
 const router=express.Router();
 
 
 router.post('/',async(req,res)=>{
     try{
+        let val=auth();
+        if(val===1){
+            //If token already present redict to user profile
+            res.render('logout',{username:username,logintime:logintime});
+        }else{
+        
         let {email,password}=req.body;
         let emailData=await logincheck.findemail(email);
         if(emailData.rowCount===0) {
-           // res.render('signin_signup',{error:"Invalid Credentials, please register",errorsign:""});
-           res.send("Invalid credential");
+            res.render('signup_signin',{error:"Invalid Credentials, please register",errorsign:""});
+         //  res.send("Invalid credential");
         }
         else{
             const hash=emailData.rows[0].pass;
@@ -23,8 +30,8 @@ router.post('/',async(req,res)=>{
             const passcheck=await bcrypt.compare(password,hash);
             console.log(passcheck);
             if(!passcheck){
-                //res.render('signin_signup',{error:"Password Missmatch",errorsign:""})
-                res.send("password error");
+                res.render('signup_signin',{error:"Password Missmatch",errorsign:""})
+             //   res.send("password error");
             }else{
                 var today = new Date();
                 var date=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -32,26 +39,28 @@ router.post('/',async(req,res)=>{
                 var logoutime= today.getHours()+ ":" + today.getMinutes() + ":" + today.getSeconds();
                 console.log(date, logintime);
                 let insertd=await logincheck.insertdata(username,email,date,logintime,logoutime);
-                if(insertd===0){
-                    res.send("You can login only once in a day");
+                if(!insertd){
+                    
                 }else{
-                    res.send("Successfull login");
+                    let token = await jwt.sign(
+                        {  
+                            email_:email,
+                            user_name: username,
+                            login_time: logintime
+                        },
+                        'secret',
+                        {
+                            expiresIn: '10h'
+                        }
+                    );
+                    res.render('logout',{username:username,logintime:logintime});
                 }
-                res.send('Hi there');
-                let token = await jwt.sign(
-                    {  
-                        email_:email,
-                        user_name: username,
-                    },
-                    'secret',
-                    {
-                        expiresIn: '10h'
-                    }
-                );
+               
 
                
             }
-        }       
+        }     
+    }  
     }catch(error){
         console.log(error);
     }

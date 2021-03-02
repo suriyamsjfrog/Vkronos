@@ -11,15 +11,16 @@ async function auth(req, res) {
 	try {
 		var result = jwt.verify(token, 'secret');
 		req.body.user_name = result.user_name;
+		req.body.login_time=result.login_time;
+		req.body.email_=result.email_;
 		console.log('Here inside auth/auth : user type is  : ', result.type);
 		console.log(result.type);
-		return;
+		let val=1;
+		return val;
 	} catch (err) {
-		console.log(result);
-		console.log(err);
-		return res.status(500).json({
-			server: 'Token info invalid'
-		});
+	console.log("Tokenexpired");
+	let v=0;
+	return v;
 	}
 }
 module.exports = auth;
