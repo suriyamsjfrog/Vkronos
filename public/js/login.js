@@ -9,13 +9,9 @@ const router=express.Router();
 
 router.post('/',async(req,res)=>{
     try{
-        let val=auth();
-        if(val===1){
-            //If token already present redict to user profile
-            res.render('logout',{username:username,logintime:logintime});
-        }else{
-        
+       
         let {email,password}=req.body;
+        //console.log(req.header);
         let emailData=await logincheck.findemail(email);
         if(emailData.rowCount===0) {
             res.render('signup_signin',{error:"Invalid Credentials, please register",errorsign:""});
@@ -40,13 +36,13 @@ router.post('/',async(req,res)=>{
                 console.log(date, logintime);
                 let insertd=await logincheck.insertdata(username,email,date,logintime,logoutime);
                 if(!insertd){
-                    
+                    let find=await logincheck.finddata(date,email);
+                    res.send( res.render('logout',{username:find.rows[0].username,logintime:find.rows[0].logintime}));
                 }else{
                     let token = await jwt.sign(
                         {  
                             email_:email,
                             user_name: username,
-                            login_time: logintime
                         },
                         'secret',
                         {
@@ -59,8 +55,7 @@ router.post('/',async(req,res)=>{
 
                
             }
-        }     
-    }  
+        }       
     }catch(error){
         console.log(error);
     }
