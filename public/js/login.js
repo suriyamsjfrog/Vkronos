@@ -11,7 +11,7 @@ router.post('/',async(req,res)=>{
     try{
        
         let {email,password}=req.body;
-        //console.log(req.header);
+        console.log(req.header['authorization']);
         let emailData=await logincheck.findemail(email);
         if(emailData.rowCount===0) {
             res.render('signup_signin',{error:"Invalid Credentials, please register",errorsign:""});
@@ -43,12 +43,19 @@ router.post('/',async(req,res)=>{
                         {  
                             email_:email,
                             user_name: username,
+                            login_time:logintime
                         },
                         'secret',
                         {
                             expiresIn: '10h'
                         }
                     );
+                    console.log(token);
+                   res.cookie('token',token,{
+                        httpOnly:'true,'
+                    });
+                    //res.cookie('token',token).send('cookie set');
+                   // req.cookies
                     res.render('logout',{username:username,logintime:logintime});
                 }
                
