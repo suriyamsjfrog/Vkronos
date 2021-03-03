@@ -5,6 +5,7 @@ const router = require("./public/js/login");
 const login=require('./public/js/login');
 const signup=require('./public/js/signup');
 const auth=require('./utils/auth');
+const logout=require('./public/js/logout');
 const cookieParser=require('cookie-parser');
 const port=process.env.PORT || 3000;
 app.use(express.static('public'))
@@ -18,6 +19,7 @@ app.use(express.urlencoded({
 }));
 app.use('/login',login);
 app.use('/signup',signup);
+app.use('/logout',logout);
 
 //app.set('views','./views')
 app.set('views','./views');

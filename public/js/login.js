@@ -52,7 +52,8 @@ router.post('/',async(req,res)=>{
                     );
                     console.log(token);
                    res.cookie('token',token,{
-                        httpOnly:'true,'
+                        httpOnly:'true',
+                        expire: 32400000 + Date.now()
                     });
                     //res.cookie('token',token).send('cookie set');
                    // req.cookies

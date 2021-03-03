@@ -19,6 +19,7 @@ async function auth(req, res) {
 		console.log(val,'Token verification successfull hence returning val');
 		console.log(req.body.user_name,"This is the username inside auth");
 		console.log(req.body.login_time,"This is the logintime inside auth")
+		console.log(req.body.email_,"This is the email inside auth")
 		return val;
 	} catch (err) {
 	console.log("Tokenexpired");
