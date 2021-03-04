@@ -34,3 +34,13 @@ module.exports.finddata=async(date,email)=>{
         console.log(error);
     }
 }
+
+module.exports.findusertype=async(email)=>{
+    try{
+        let usertype=await pool.query('select * from staff_admin where email_address=$1',[email]);
+        console.log(usertype.rows);
+        return usertype.rows;
+    }catch(error){
+        console.log("The user doesnt exist in staff admin database");
+    }
+}

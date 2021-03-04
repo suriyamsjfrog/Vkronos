@@ -11,12 +11,22 @@ module.exports.findemail=async(email)=>{
     }
 }
 
-module.exports.insertdata=async(email,password,username)=>{
+module.exports.insertdata=async(email,password,username,U)=>{
     try{
-        let insertd=await pool.query('Insert into Register values($1,$2,$3) returning email,username',[username,email,password]);
+        let insertd=await pool.query('Insert into Register values($1,$2,$3,$4) returning email,username',[username,email,password,U]);
         console.log(insertd.rowCount);
         return insertd.rowCount;
     }catch(error){
         console.log(error);
+    }
+}
+
+module.exports.findusertype=async(email)=>{
+    try{
+        let usertype=await pool.query('select * from staff_admin where email_address=$1',[email]);
+        console.log(usertype.rows);
+        return usertype.rows;
+    }catch(error){
+        console.log("The user doesnt exist in staff admin database");
     }
 }

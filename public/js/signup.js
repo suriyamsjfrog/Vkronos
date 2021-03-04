@@ -19,7 +19,14 @@ router.post('/',async(req,res)=>{
         }else{
             salt=await bcrypt.genSalt(10);
             const hash = await bcrypt.hash(password, salt);
-            let rowinsert=await signup.insertdata(email,hash,username);
+            let usert=await signup.findusertype(email);
+            let Utype='U'
+            console.log(usert[0].role_group);
+            if(usert[0].role_group==='Managment'){
+                console.log("He is a manager");
+                Utype='M'
+            }
+            let rowinsert=await signup.insertdata(email,hash,username,Utype);
             if(!rowinsert){
                 console.log("Not inserted");
             }

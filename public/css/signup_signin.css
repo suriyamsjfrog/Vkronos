@@ -1,3 +1,8 @@
+html{
+    width:100%;
+    height:100%;
+}
+
 body {
     margin: 0;
     color: #6a6f8c;
@@ -9,13 +14,45 @@ body {
     font: 600 16px/18px 'Open Sans', sans-serif;
 }
 
+
+.navbar{
+    padding-top:13px;
+    min-height: 35px;
+    width:39.5%;
+}
+
+.navbar-inverse{
+	background:rgb(0, 0, 0);
+	height:5%;
+	border:none;	
+}
+
+.navbar-inverse .navbar-nav>li>a{
+	font-size: 18px;
+	color: white;
+}
+.navbar-inverse .navbar-brand
+{
+	font-size: 20px;
+	color: white;
+}
+
+h1 {
+    
+    color:black;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    }
+
+
 .login-box {
     width: 100%;
     margin: auto;
     /* margin: 20px 0px 0px 15px; */
     /* padding : 0px 0px 0px 15px; */
     max-width: 525px;
-    min-height: 615px;
+    min-height: 594px;
     /* min-height: 650px; */
     position: relative;
     /* background: url(https://www.seekpng.com/png/detail/243-2432355_vmware-logo-transparent.png) no-repeat center; */
@@ -23,7 +60,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     /* background-size: cover; */
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19)
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, .19)
 }
 
 .login-snip {
