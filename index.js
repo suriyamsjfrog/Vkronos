@@ -4,6 +4,7 @@ const path=require('path');
 const router = require("./public/js/login");
 const login=require('./public/js/login');
 const signup=require('./public/js/signup');
+const manager=require('./public/js/manager_route');
 const auth=require('./utils/auth');
 const logout=require('./public/js/logout');
 const cookieParser=require('cookie-parser');
@@ -21,6 +22,7 @@ app.use(express.urlencoded({
 app.use('/login',login);
 app.use('/signup',signup);
 app.use('/logout',logout);
+app.use('/manager',manager);
 
 //app.set('views','./views')
 app.set('views','./views');
@@ -41,7 +43,11 @@ app.get("/",async (req,res)=>{
         var bunit=staffdata[0].business_unit;
         var shift_time=shift_times[staffdata[0].business_unit];
         console.log(shift_time);
-        res.render('user_profile',{username:req.body.user_name,logintime:req.body.login_time,bunit:bunit,shift_time:shift_time});
+        if(req.body.usertype==='M'){
+            res.render('manager_page',{username:username,dropdownVals:dropdownlist});
+        }else{
+            res.render('user_profile',{username:req.body.user_name,logintime:req.body.login_time,bunit:bunit,shift_time:shift_time});
+        }
     }else{
         res.render('signup_signin',{error:"",errorsign:""});
     }

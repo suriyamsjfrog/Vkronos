@@ -1,5 +1,6 @@
 const express=require("express");
 const logincheck=require("../../models/logincheck");
+const manager=require("../../models/manager");
 const validCred=require("../../public/js/validcred");
 const jwt=require("jsonwebtoken");
 const auth=require("../../utils/auth");
@@ -47,10 +48,15 @@ router.post('/',async(req,res)=>{
                 var logoutime= today.getHours()+ ":" + today.getMinutes() + ":" + today.getSeconds();
                 console.log(date, logintime);
                 let insertd=await logincheck.insertdata(username,email,date,logintime,logoutime);
+                let dropdownlist=await manager.dropdownlist(email);
                 if(!insertd){
                     let find=await logincheck.finddata(date,email);
-                    res.send( res.render('user_profile',{username:find.rows[0].username,logintime:find.rows[0].logintime,bunit:bunit,shift_time:shift_time}));
-                }else{
+                    if(usertype==='M'){
+                        res.render('manager_page',{username:username,dropdownVals:dropdownlist});
+                    }else{
+                        res.send( res.render('user_profile',{username:find.rows[0].username,logintime:find.rows[0].logintime,bunit:bunit,shift_time:shift_time}));
+                    }
+                    }else{
                     let token = await jwt.sign(
                         {  
                             email_:email,
@@ -70,7 +76,12 @@ router.post('/',async(req,res)=>{
                     });
                     //res.cookie('token',token).send('cookie set');
                    // req.cookies
+                   if(usertype==='M'){
+                    res.render('manager_page');
+                   }else{
                     res.render('user_profile',{username:username,logintime:logintime,bunit:bunit,shift_time:shift_time});
+                   }
+                    
                 }
                
 
