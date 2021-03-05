@@ -5,6 +5,7 @@ const router = require("./public/js/login");
 const login=require('./public/js/login');
 const signup=require('./public/js/signup');
 const manager=require('./public/js/manager_route');
+const dropdown=require('./models/manager');
 const auth=require('./utils/auth');
 const logout=require('./public/js/logout');
 const cookieParser=require('cookie-parser');
@@ -39,9 +40,11 @@ app.get("/",async (req,res)=>{
     console.log('Response after auth is',s);
     if(s===1){
         let staffdata=await logincheck.findusertype(req.body.email_);
+        let username=req.body.user_name;
         console.log(staffdata[0].business_unit);
         var bunit=staffdata[0].business_unit;
         var shift_time=shift_times[staffdata[0].business_unit];
+        let dropdownlist=await dropdown.dropdownlist(req.body.email_);
         console.log(shift_time);
         if(req.body.usertype==='M'){
             res.render('manager_page',{username:username,dropdownVals:dropdownlist});

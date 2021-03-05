@@ -8,7 +8,15 @@ router.post('/',async (req,res)=>{
 
             console.log("Inside the manager route");
             console.log(req.body);
+            var arr=[];
+            var a=req.body.Employee;
+            var Startdate=req.body.Start_date;
+            var Enddate=req.body.End_date;
+            arr.push(a);
+            console.log(arr);
+           await  managermodel.csvfile(arr,Startdate,Enddate);
             res.send("Hi manager");
+            
     }catch(error){
         console.log(error);
     }

@@ -79,7 +79,7 @@ router.post('/',async(req,res)=>{
                    if(usertype==='M'){
                     res.render('manager_page');
                    }else{
-                    res.render('user_profile',{username:username,logintime:logintime,bunit:bunit,shift_time:shift_time});
+                    res.render('user_profile',{username:username,logintime:logintime,bunit:bunit,shift_time:shift_time,dropdownVals:dropdownlist});
                    }
                     
                 }

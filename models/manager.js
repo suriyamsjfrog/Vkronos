@@ -16,3 +16,22 @@ module.exports.dropdownlist=async(email)=>{
     }
 
 }
+
+
+module.exports.csvfile=async(arr,startdate,enddate)=>{
+    console.log('Inside csv route');
+    var params = [];
+    console.log(arr);
+    for(var i = 1; i <= arr.length; i++) {
+    params.push('$' + i);
+    }
+    let j='$'+(arr.length+1);
+    let k='$'+(arr.length+2);
+    arr.push(startdate);
+    arr.push(enddate);
+    var queryText = 'SELECT * FROM logintime WHERE username IN (' + params.join(',') + ')'+'and currentdate between '+ j+' and '+k;
+    console.log(queryText);
+    let result=await pool.query(queryText,arr);
+    console.log(result.rows);
+    return ;
+}
