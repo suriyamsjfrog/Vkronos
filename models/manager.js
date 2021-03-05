@@ -29,9 +29,11 @@ module.exports.csvfile=async(arr,startdate,enddate)=>{
     let k='$'+(arr.length+2);
     arr.push(startdate);
     arr.push(enddate);
-    var queryText = 'SELECT * FROM logintime WHERE username IN (' + params.join(',') + ')'+'and currentdate between '+ j+' and '+k;
+    var queryText = 'SELECT s.business_unit,s.working_day,s.employee_fullname,l.username,l.email,s.role_type,s.role_group,l.currentdate,l.logintime,l.logouttime FROM logintime as l,staff_admin as s WHERE l.email=s.email_address and l.username IN (' + params.join(',') + ')'+'and currentdate between '+ j+' and '+k+' order by l.username,l.currentdate';
     console.log(queryText);
     let result=await pool.query(queryText,arr);
-    console.log(result.rows);
-    return ;
+   // console.log(result.rows);
+    jsonData=JSON.parse(JSON.stringify(result.rows));
+    console.log(jsonData);
+    return jsonData ;
 }

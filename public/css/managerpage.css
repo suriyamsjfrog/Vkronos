@@ -3,8 +3,8 @@ html{
 	height:100%;
 }
 body{
-
-    background: url(https://blogs.vmware.com/vsphere/files/2016/04/vmwcolors5.png)no-repeat center center fixed;
+    background: url(https://amica.ua/wp-content/uploads/2020/10/vmw-refresh-hero-banner-bg_1400x500.jpg)no-repeat center center fixed;
+    /* background: url(https://blogs.vmware.com/vsphere/files/2016/04/vmwcolors5.png)no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -13,33 +13,34 @@ body{
     overflow: hidden; 
 }
 
-
-
 h1{
-    font-family: "Lucida Console", "Courier New", monospace;
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
     font-weight: 700;
     text-align: center;
+    font-size: xx-large;
 	padding-top: 5%;
-	
+	padding-bottom: 5%;
 	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
 				 0px 8px 13px rgba(0,0,0,0.1),
 				 0px 18px 23px rgba(0,0,0,0.1);
 
 }
 label{
-    font-family: "Lucida Console", "Courier New", monospace;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    font-size: medium;
+    font-size: x-large;
     text-align: center;
   
 
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    /* text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
 				 0px 8px 13px rgba(0,0,0,0.1),
-				 0px 18px 23px rgba(0,0,0,0.1);
+				 0px 18px 23px rgba(0,0,0,0.1); */
 
 }
 .navbar{
-    padding-top:13px;
+    padding: top 9px;
     min-height: 35px;
 }
 
@@ -65,7 +66,7 @@ label{
    position: absolute;
    top: 0px;
    left: 0px;
-   background: rgba(0, 0, 0, 0.2);    
+   background: rgba(0, 0, 0, 0.1);    
 }
  button {
     border: none;
@@ -75,9 +76,22 @@ label{
 button:focus {
     border: none;
 } 
+.row
+{
+    padding-left: 5%;
+}
 
+.btn-outline-info{
+    margin-top:3px;
+	color:#f3f6f7;
+	border-color:#080808;
+	background-color: transparent;
+}
+.btn-outline-info:hover:hover{
+    color:white;
+    background-color:transparent;
 
-
+}
 
 
 /* .box{

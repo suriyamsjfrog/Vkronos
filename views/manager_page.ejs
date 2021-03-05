@@ -1,7 +1,8 @@
 <html>
 <head>
     <title>Welcome to manager page</title>
-    <link rel="stylesheet" type="text/css" href="../css/manager_page.css">
+    <link rel="stylesheet" type="text/css" href="../css/managerpage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <style>
       .dropdown-check-list {
@@ -60,14 +61,14 @@
       box-sizing: border-box;
       }
 
-      input[type=Report] {
+      input[type=submit] {
       width: 10%;
       background-color: #62bfcf;
       color: rgb(15, 15, 15);
       font-weight: 700;
       font-size:large;
       padding: 14px 20px;
-      margin: 8px 0;
+      margin: 30px 50px 50px 45%;
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -75,14 +76,20 @@
       border-radius: 2px;
       box-sizing: border-box;
       }
-      input[type=Report]:hover {
+      input[type=submit]:hover {
       background-color: #07cad8;
+      }
+      input[type=date]{
+          font-size: large;
+          border-style: solid;
+          border-color:black;
+          border-width: 2px;
       }
 /*The new checkox*/
 
 
       .MultiCheckBox {
-      border:1px solid #e2e2e2;
+      border:2px solid #131212;
       padding: 5px;
       border-radius:4px;
       cursor:pointer;
@@ -149,8 +156,8 @@
 
 
     </style>
-      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/7fa4b450dd.js" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function () {
       $("#test").CreateMultiCheckBox({ width: '230px', defaultText : 'Select Below', height:'250px' });
@@ -255,31 +262,43 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-
-                
                 <a class="navbar-brand"><img class="img-responsive2"       
-                src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png></a>
-                
+                src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png>
+                </a>  
             </div>
-        </div>
-    </nav>
-    <h1 style="color: black">Hello <%=username%></h1>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <form class="d-flex" action='/logout' method="POST">
+                          <button class="btn btn-outline-info btn-lg" type="submit">Logout <i class="fas fa-sign-in-alt"></i></button>
+                       </form>
+                      
+                  </li>
+                </ul>
+        </div><!----Container close-->
+    </nav><!-----navbar close-->
+    <h1 style="font-size:55px; color:black; font-family: Arial, Helvetica, sans-serif">Hello <%=username%></h1>
 
     
+    <div class="row">
+        <div class="col-md-4">
+        <form action="/manager" method="POST">
+        <label for="fname">Employee Name:</label>
+            <select id="test" name="Employee">
+                <% for(var i=0; i < dropdownVals.length; i++) { %>
+                <option value=<%=dropdownVals[i].nt_id %>><%= dropdownVals[i].employee_fullname %></option>
+            <% } %>  
+            </select>
+        </div>
 
-    <form action="/manager" method="POST">
-      <label for="fname">Employee name:</label>
-         <select id="test" name="Employee">
-            <% for(var i=0; i < dropdownVals.length; i++) { %>
-              <option value=<%=dropdownVals[i].nt_id %>><%= dropdownVals[i].employee_fullname %></option>
-           <% } %>
-             
-          </select>
-          <label for="start">Start date:</label>
-          <input type="date" id="start" name="Start_date" value="2021-03-01" min="2021-01-01" max="2030-12-31">
-          <label for="start">End date:</label>
-          <input type="date" id="start" name="End_date" value="2021-03-01" min="2021-01-01" max="2030-12-31">
-          <input type="submit" class="button" value="Report">
+        <div class="col-md-4"><label for="start">Start Date:</label>
+        <input type="date" id="start" name="Start_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
+
+        <div class="col-md-4">
+            <label for="start">End Date:</label>
+            <input type="date" id="start" name="End_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
+    </div>
+          <input type="submit" class="button" value="REPORT">
     </form>
     
 
