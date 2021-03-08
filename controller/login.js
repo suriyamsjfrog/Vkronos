@@ -1,9 +1,9 @@
 const express=require("express");
-const logincheck=require("../../models/logincheck");
-const manager=require("../../models/manager");
-const validCred=require("../../public/js/validcred");
+const logincheck=require("../models/logincheck");
+const manager=require("../models/manager");
+const validCred=require("./validcred");
 const jwt=require("jsonwebtoken");
-const auth=require("../../utils/auth");
+const auth=require("../utils/auth");
 const bcrypt=require("bcrypt");
 const router=express.Router();
 
@@ -52,9 +52,9 @@ router.post('/',async(req,res)=>{
                 if(!insertd){
                     let find=await logincheck.finddata(date,email);
                     if(usertype==='M'){
-                        res.render('manager_page',{username:username,dropdownVals:dropdownlist});
+                        res.render('manager_page',{username:staffdata[0].employee_fullname,dropdownVals:dropdownlist});
                     }else{
-                        res.send( res.render('user_profile',{username:find.rows[0].username,logintime:find.rows[0].logintime,bunit:bunit,shift_time:shift_time}));
+                     res.render('user_profile',{username:staffdata[0].employee_fullname,logintime:find.rows[0].logintime,bunit:bunit,shift_time:shift_time});
                     }
                     }else{
                     let token = await jwt.sign(
@@ -77,9 +77,9 @@ router.post('/',async(req,res)=>{
                     //res.cookie('token',token).send('cookie set');
                    // req.cookies
                    if(usertype==='M'){
-                    res.render('manager_page');
+                    res.render('manager_page',{username:staffdata[0].employee_fullname,dropdownVals:dropdownlist});
                    }else{
-                    res.render('user_profile',{username:username,logintime:logintime,bunit:bunit,shift_time:shift_time,dropdownVals:dropdownlist});
+                    res.render('user_profile',{username:staffdata[0].employee_fullname,logintime:logintime,bunit:bunit,shift_time:shift_time});
                    }
                     
                 }

@@ -1,8 +1,8 @@
 const express=require("express");
 const Json2csvParser = require("json2csv").Parser;
 const router=express.Router();
-const managermodel=require('../../models/manager');
-const auth=require('../../utils/auth');
+const managermodel=require('../models/manager');
+const auth=require('../utils/auth');
 
 router.post('/',async (req,res)=>{
     try{

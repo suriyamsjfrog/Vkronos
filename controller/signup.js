@@ -1,8 +1,8 @@
 const express=require("express");
 const bcrypt=require("bcrypt");
 const router=express.Router();
-const validCred=require('../../public/js/validcred');
-const signup=require('../../models/signup');
+const validCred=require('./validcred');
+const signup=require('../models/signup');
 router.post('/',async(req,res)=>{
     try{
         let {username,password,cpassword,email}=req.body;

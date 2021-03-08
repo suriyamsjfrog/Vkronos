@@ -1,13 +1,12 @@
 const express=require("express");
 const app=express();
 const path=require('path');
-const router = require("./public/js/login");
-const login=require('./public/js/login');
-const signup=require('./public/js/signup');
-const manager=require('./public/js/manager_route');
+const login=require('./controller/login');
+const signup=require('./controller/signup');
+const manager=require('./controller/manager_route');
 const dropdown=require('./models/manager');
 const auth=require('./utils/auth');
-const logout=require('./public/js/logout');
+const logout=require('./controller/logout');
 const cookieParser=require('cookie-parser');
 const logincheck=require('./models/logincheck');
 const port=process.env.PORT || 3000;
@@ -47,9 +46,9 @@ app.get("/",async (req,res)=>{
         let dropdownlist=await dropdown.dropdownlist(req.body.email_);
         console.log(shift_time);
         if(req.body.usertype==='M'){
-            res.render('manager_page',{username:username,dropdownVals:dropdownlist});
+            res.render('manager_page',{username:staffdata[0].employee_fullname,dropdownVals:dropdownlist});
         }else{
-            res.render('user_profile',{username:req.body.user_name,logintime:req.body.login_time,bunit:bunit,shift_time:shift_time});
+            res.render('user_profile',{username:staffdata[0].employee_fullname,logintime:req.body.login_time,bunit:bunit,shift_time:shift_time});
         }
     }else{
         res.render('signup_signin',{error:"",errorsign:""});

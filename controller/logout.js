@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
-const updatelogout=require('../../models/logout');
-const auth=require('../../utils/auth');
+const updatelogout=require('../models/logout');
+const auth=require('../utils/auth');
 router.post('/',async(req,res)=>{
 try{
     let s=await auth(req,res);
