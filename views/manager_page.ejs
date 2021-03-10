@@ -1,264 +1,256 @@
 <html>
+
 <head>
-    <title>Welcome to manager page</title>
+    <title>vKronos</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/managerpage.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <style>
-      .dropdown-check-list {
-      display: inline-block;
+    <style>
+        input.mulinput{
+            margin-top: 5px;
         }
-      .dropdown-check-list .anchor {
-      position: relative;
-      cursor: pointer;
-      display: inline-block;
-      padding: 5px 50px 5px 10px;
-      border: 1px solid #ccc;
-      }
-      .dropdown-check-list .anchor:after {
-      position: absolute;
-      content: "";
-      border-left: 2px solid black;
-      border-top: 2px solid black;
-      padding: 5px;
-      right: 10px;
-      top: 20%;
-      -moz-transform: rotate(-135deg);
-      -ms-transform: rotate(-135deg);
-      -o-transform: rotate(-135deg);
-      -webkit-transform: rotate(-135deg);
-      transform: rotate(-135deg);
-      }
-      .dropdown-check-list .anchor:active:after {
-      right: 8px;
-      top: 21%;
-      }
-      .dropdown-check-list ul.items {
-      padding: 2px;
-      display: none;
-      margin: 0;
-      border: 1px solid #ccc;
-      border-top: none;
-      }
-      .dropdown-check-list ul.items li {
-      list-style: none;
-      }
-      .dropdown-check-list.visible .anchor {
-      color: #0094ff;
-      }
-      .dropdown-check-list.visible .items {
-      display: block;
-      }
+        input[type=text],
+        select {
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
 
+        input[type=submit] {
+            width: 10%;
+            background-color: #62bfcf;
+            color: rgb(15, 15, 15);
+            font-weight: 700;
+            font-size: large;
+            padding: 14px 20px;
+            margin: 30px 50px 50px 45%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
 
-      input[type=text], select {
-      width: 20%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 2px solid black;
-      border-radius: 2px;
-      box-sizing: border-box;
-      }
+        input[type=submit]:hover {
+            background-color: #07cad8;
+        }
 
-      input[type=submit] {
-      width: 10%;
-      background-color: #62bfcf;
-      color: rgb(15, 15, 15);
-      font-weight: 700;
-      font-size:large;
-      padding: 14px 20px;
-      margin: 30px 50px 50px 45%;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      border: 2px solid black;
-      border-radius: 2px;
-      box-sizing: border-box;
-      }
-      input[type=submit]:hover {
-      background-color: #07cad8;
-      }
-      input[type=date]{
-          font-size: large;
-          border-style: solid;
-          border-color:black;
-          border-width: 2px;
-      }
-/*The new checkox*/
+        input[type=date] {
+            font-size: large;
+            border-style: solid;
+            border-color: black;
+            border-width: 2px;
+        }
 
+        /*The new checkox*/
+        .MultiCheckBox {
+            border: 2px solid #131212;
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        
+        }
 
-      .MultiCheckBox {
-      border:2px solid #131212;
-      padding: 5px;
-      border-radius:4px;
-      cursor:pointer;
-      }
+        .MultiCheckBox .k-icon {
+            font-size: 15px;
+            float: right;
+            font-weight: bolder;
+            margin-top: -7px;
+            height: 10px;
+            width: 14px;
+            color: #787878;
+        }
 
-      .MultiCheckBox .k-icon{ 
-      font-size: 15px;
-      float: right;
-      font-weight: bolder;
-      margin-top: -7px;
-      height: 10px;
-      width: 14px;
-      color:#787878;
-      } 
+        .MultiCheckBoxDetail {
+            display: none;
+            position: absolute;
+            border: 1px solid #e2e2e2;
+            overflow-y: hidden;
+        }
 
-      .MultiCheckBoxDetail {
-      display:none;
-      position:absolute;
-      border:1px solid #e2e2e2;
-      overflow-y:hidden;
-      }
+        .MultiCheckBoxDetailBody {
+            overflow-y: scroll;
+        }
 
-      .MultiCheckBoxDetailBody {
-      overflow-y:scroll;
-      }
+        .MultiCheckBoxDetail .cont {
+            clear: both;
+            overflow: hidden;
+            padding: 2px;
+        }
 
-      .MultiCheckBoxDetail .cont  {
-      clear:both;
-      overflow: hidden;
-                padding: 2px;
-            }
+        .MultiCheckBoxDetail .cont:hover {
+            background-color: #cfcfcf;
+        }
 
-            .MultiCheckBoxDetail .cont:hover  {
-                background-color:#cfcfcf;
-            }
-
-            .MultiCheckBoxDetailBody > div > div {
-                float:left;
-            }
+        .MultiCheckBoxDetailBody>div>div {
+            float: left;
+        }
 
         /* .MultiCheckBoxDetail>div>div:nth-child(1) {
         
         } */
-
         .MultiCheckBoxDetailHeader {
-            overflow:hidden;
-            position:relative;
+            overflow: hidden;
+            position: relative;
             height: 28px;
-            background-color:#3d3d3d;
+            background-color: #3d3d3d;
         }
 
-            .MultiCheckBoxDetailHeader>input {
-                position: absolute;
-                top: 4px;
-                left: 3px;
-            }
+        .MultiCheckBoxDetailHeader>input {
+            position: absolute;
+            top: 4px;
+            left: 3px;
+        }
 
-            .MultiCheckBoxDetailHeader>div {
-                position: absolute;
-                top: 5px;
-                left: 24px;
-                color:#fff;
-            }
-
-
+        .MultiCheckBoxDetailHeader>div {
+            position: absolute;
+            top: 5px;
+            left: 24px;
+            color: #fff;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://kit.fontawesome.com/7fa4b450dd.js" crossorigin="anonymous"></script>
-<script>
-  $(document).ready(function () {
-      $("#test").CreateMultiCheckBox({ width: '230px', defaultText : 'Select Below', height:'250px' });
-  });
+    <script>
+        $(document).ready(function () {
+            $("#test").CreateMultiCheckBox({
+                width: '230px',
+                defaultText: 'Employee Name',
+                height: '250px'
+            });
+        });
+        $(document).ready(function () {
+            $(document).on("click", ".MultiCheckBox", function () {
+                var detail = $(this).next();
+                detail.show();
+            });
+            $(document).on("click", ".MultiCheckBoxDetailHeader input", function (e) {
+                e.stopPropagation();
+                var hc = $(this).prop("checked");
+                $(this).closest(".MultiCheckBoxDetail").find(".MultiCheckBoxDetailBody input").prop(
+                    "checked", hc);
+                $(this).closest(".MultiCheckBoxDetail").next().UpdateSelect();
+            });
+            $(document).on("click", ".MultiCheckBoxDetailHeader", function (e) {
+                var inp = $(this).find("input");
+                var chk = inp.prop("checked");
+              
+                inp.prop("checked", !chk);
+                $(this).closest(".MultiCheckBoxDetail").find(".MultiCheckBoxDetailBody input").prop(
+                    "checked", !chk);
+                $(this).closest(".MultiCheckBoxDetail").next().UpdateSelect();
+                
+                
+            });
+            $(document).on("click", ".MultiCheckBoxDetail .cont input", function (e) {
+                e.stopPropagation();
+                $(this).closest(".MultiCheckBoxDetail").next().UpdateSelect();
+                var val = ($(".MultiCheckBoxDetailBody input:checked").length == $(
+                    ".MultiCheckBoxDetailBody input").length)
+                $(".MultiCheckBoxDetailHeader input").prop("checked", val);
+            });
+            $(document).on("click", ".MultiCheckBoxDetail .cont", function (e) {
+                var inp = $(this).find("input");
+                var chk = inp.prop("checked");
 
+                inp.prop("checked", !chk);
+                var multiCheckBoxDetail = $(this).closest(".MultiCheckBoxDetail");
+                var multiCheckBoxDetailBody = $(this).closest(".MultiCheckBoxDetailBody");
+               
+                multiCheckBoxDetail.next().UpdateSelect();
+                var val = ($(".MultiCheckBoxDetailBody input:checked").length == $(
+                    ".MultiCheckBoxDetailBody input").length)
+                $(".MultiCheckBoxDetailHeader input").prop("checked", val);
+            });
+            $(document).mouseup(function (e) {
+                var container = $(".MultiCheckBoxDetail");
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    container.hide();
+                }
+            });
+        });
+        var defaultMultiCheckBoxOption = {
+             width: '220px',
+             defaultText: 'Select Below',
+            height: '200px'
+         };
+        jQuery.fn.extend({
+            CreateMultiCheckBox: function (options) {
+                var localOption = {};
+                localOption.width = (options != null && options.width != null && options.width !=
+                    undefined) ? options.width : defaultMultiCheckBoxOption.width;
+                localOption.defaultText = (options != null && options.defaultText != null && options
+                        .defaultText != undefined) ? options.defaultText : defaultMultiCheckBoxOption
+                    .defaultText;
+                localOption.height = (options != null && options.height != null && options.height !=
+                    undefined) ? options.height : defaultMultiCheckBoxOption.height;
+                this.hide();
+                
+                this.attr("multiple", "multiple");
+                var divSel = $("<div class='MultiCheckBox'>" + localOption.defaultText +
+                    "<span class='k-icon k-i-arrow-60-down'><svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='sort-down' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' class='svg-inline--fa fa-sort-down fa-w-10 fa-2x'><path fill='currentColor' d='M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z' class=''></path></svg></span></div>"
+                ).insertBefore(this);
+                divSel.css({
+                    "width": localOption.width
+                });
+                var detail = $(
+                    "<div class='MultiCheckBoxDetail'><div class='MultiCheckBoxDetailHeader'><input type='checkbox' class='mulinput' value='-1982' /><div>Select All</div></div><div class='MultiCheckBoxDetailBody'></div></div>"
+                ).insertAfter(divSel);
+                detail.css({
+                    "width": parseInt(options.width) + 10,
+                    "max-height": localOption.height
+                });
+                var multiCheckBoxDetailBody = detail.find(".MultiCheckBoxDetailBody");
+                this.find("option").each(function () {
+                    var val = $(this).attr("value");
+                    if (val == undefined)
+                        val = '';
+                    multiCheckBoxDetailBody.append(
+                        "<div class='cont'><div><input type='checkbox' class='mulinput' value='" +
+                        val + "' /></div><div>" + $(this).text() + "</div></div>");
+                });
+                multiCheckBoxDetailBody.css("max-height", (parseInt($(".MultiCheckBoxDetail").css(
+                    "max-height")) - 28) + "px");
 
-  $(document).ready(function () {
-      $(document).on("click", ".MultiCheckBox", function () {
-          var detail = $(this).next();
-          detail.show();
-      });
-
-      $(document).on("click", ".MultiCheckBoxDetailHeader input", function (e) {
-          e.stopPropagation();
-          var hc = $(this).prop("checked");
-          $(this).closest(".MultiCheckBoxDetail").find(".MultiCheckBoxDetailBody input").prop("checked", hc);
-          $(this).closest(".MultiCheckBoxDetail").next().UpdateSelect();
-      });
-
-      $(document).on("click", ".MultiCheckBoxDetailHeader", function (e) {
-          var inp = $(this).find("input");
-          var chk = inp.prop("checked");
-          inp.prop("checked", !chk);
-          $(this).closest(".MultiCheckBoxDetail").find(".MultiCheckBoxDetailBody input").prop("checked", !chk);
-          $(this).closest(".MultiCheckBoxDetail").next().UpdateSelect();
-      });
-
-      $(document).on("click", ".MultiCheckBoxDetail .cont input", function (e) {
-          e.stopPropagation();
-          $(this).closest(".MultiCheckBoxDetail").next().UpdateSelect();
-
-          var val = ($(".MultiCheckBoxDetailBody input:checked").length == $(".MultiCheckBoxDetailBody input").length)
-          $(".MultiCheckBoxDetailHeader input").prop("checked", val);
-      });
-
-      $(document).on("click", ".MultiCheckBoxDetail .cont", function (e) {
-          var inp = $(this).find("input");
-          var chk = inp.prop("checked");
-          inp.prop("checked", !chk);
-
-          var multiCheckBoxDetail = $(this).closest(".MultiCheckBoxDetail");
-          var multiCheckBoxDetailBody = $(this).closest(".MultiCheckBoxDetailBody");
-          multiCheckBoxDetail.next().UpdateSelect();
-
-          var val = ($(".MultiCheckBoxDetailBody input:checked").length == $(".MultiCheckBoxDetailBody input").length)
-          $(".MultiCheckBoxDetailHeader input").prop("checked", val);
-      });
-
-      $(document).mouseup(function (e) {
-          var container = $(".MultiCheckBoxDetail");
-          if (!container.is(e.target) && container.has(e.target).length === 0) {
-              container.hide();
-          }
-      });
-  });
-
-  var defaultMultiCheckBoxOption = { width: '220px', defaultText: 'Select Below', height: '200px' };
-
-  jQuery.fn.extend({
-      CreateMultiCheckBox: function (options) {
-
-          var localOption = {};
-          localOption.width = (options != null && options.width != null && options.width != undefined) ? options.width : defaultMultiCheckBoxOption.width;
-          localOption.defaultText = (options != null && options.defaultText != null && options.defaultText != undefined) ? options.defaultText : defaultMultiCheckBoxOption.defaultText;
-          localOption.height = (options != null && options.height != null && options.height != undefined) ? options.height : defaultMultiCheckBoxOption.height;
-
-          this.hide();
-          this.attr("multiple", "multiple");
-          var divSel = $("<div class='MultiCheckBox'>" + localOption.defaultText + "<span class='k-icon k-i-arrow-60-down'><svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='sort-down' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' class='svg-inline--fa fa-sort-down fa-w-10 fa-2x'><path fill='currentColor' d='M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z' class=''></path></svg></span></div>").insertBefore(this);
-          divSel.css({ "width": localOption.width });
-
-          var detail = $("<div class='MultiCheckBoxDetail'><div class='MultiCheckBoxDetailHeader'><input type='checkbox' class='mulinput' value='-1982' /><div>Select All</div></div><div class='MultiCheckBoxDetailBody'></div></div>").insertAfter(divSel);
-          detail.css({ "width": parseInt(options.width) + 10, "max-height": localOption.height });
-          var multiCheckBoxDetailBody = detail.find(".MultiCheckBoxDetailBody");
-
-          this.find("option").each(function () {
-              var val = $(this).attr("value");
-
-              if (val == undefined)
-                  val = '';
-
-              multiCheckBoxDetailBody.append("<div class='cont'><div><input type='checkbox' class='mulinput' value='" + val + "' /></div><div>" + $(this).text() + "</div></div>");
-          });
-
-          multiCheckBoxDetailBody.css("max-height", (parseInt($(".MultiCheckBoxDetail").css("max-height")) - 28) + "px");
-      },
-      UpdateSelect: function () {
-          var arr = [];
-
-          this.prev().find(".mulinput:checked").each(function () {
-              arr.push($(this).val());
-          });
-
-          this.val(arr);
-      },
-  });
-</script>
+                   
+            },
+            UpdateSelect: function () {
+                var arr = [];
+                this.prev().find(".mulinput:checked").each(function () {
+                  
+                    arr.push($(this).val());
+                });
+              
+                this.val(arr);
+            },
+        });
+    </script>
 
 </head>
+
 <body>
-    <div class="tint">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="../img/Vmware.svg" width="200" height="20" alt="vmware-logo">
+        </a>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <form class="d-flex" action='/logout' method="POST">
+                    <button class="btn btn-dark" type="submit">Logout <i class="fas fa-sign-in-alt"></i></button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <!-- <div class="tint">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -275,38 +267,34 @@
                       
                   </li>
                 </ul>
-        </div><!----Container close-->
-    </nav><!-----navbar close-->
-    <h1 style="font-size:55px; color:black; font-family: Arial, Helvetica, sans-serif">Hello <%=username%></h1>
+        </div>
+    </nav> -->
+    <h1 style="font-size: 5em"><%=username%></h1>
 
-    
+
     <div class="row">
         <div class="col-md-4">
-        <form action="/manager" method="POST">
-        <label for="fname">Employee Name:</label>
-            <select id="test" name="Employee">
-                <% for(var i=0; i < dropdownVals.length; i++) { %>
-                <option value=<%=dropdownVals[i].nt_id %>><%= dropdownVals[i].employee_fullname %></option>
-            <% } %>  
-            </select>
+            <form action="/manager" method="POST">
+                <select id="test" name="Employee">
+                    <% for(var i=0; i < dropdownVals.length; i++) { %>
+                    <option value=<%=dropdownVals[i].nt_id %>><%= dropdownVals[i].employee_fullname %></option>
+                    <% } %>
+                </select>
         </div>
 
         <div class="col-md-4"><label for="start">Start Date:</label>
-        <input type="date" id="start" name="Start_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
+            <input type="date" id="start" name="Start_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
 
         <div class="col-md-4">
             <label for="start">End Date:</label>
             <input type="date" id="start" name="End_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
     </div>
-          <input type="submit" class="button" value="REPORT">
-    </form>
-    
-
-    
-    
+    <div class="rstbtn">
+        <!-- <input type="submit" class="button" value="REPORT"> -->
+        <button type="submit" class="btn btn-success btn-lg">Export <i class="fas fa-file-download"></i></button>
     </div>
-   
-    
+    </form>
+    </div>
 </body>
 
 </html>

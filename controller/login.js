@@ -56,7 +56,7 @@ router.post("/", async (req, res) => {
           today.getMinutes() +
           ":" +
           today.getSeconds();
-        today.setHours(today.getHours() + 9);
+        today.setHours(today.getHours() + 9.15);
         var logoutime =
           today.getHours() +
           ":" +
@@ -103,7 +103,7 @@ router.post("/", async (req, res) => {
           console.log(token);
           res.cookie("token", token, {
             httpOnly: "true",
-            expire: 32400000 + Date.now(),
+            expire: 33300000 + Date.now(),
           });
           //res.cookie('token',token).send('cookie set');
           // req.cookies

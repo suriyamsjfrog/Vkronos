@@ -23,7 +23,14 @@ router.post("/", async (req, res) => {
     let jsonData = await managermodel.csvfile(arr, Startdate, Enddate);
     const json2csvParser = new Json2csvParser({ header: true });
     console.log("JSON to csv parser");
-    const csv = json2csvParser.parse(jsonData);
+    try {
+      csv = json2csvParser.parse(jsonData);
+    } catch {
+      console.log("No data found");
+      let i = "no data found";
+      csv = { field: i };
+    }
+
     res.header("Content-Type", "text/csv");
     res.attachment("employee_report.csv");
     return res.send(csv);
