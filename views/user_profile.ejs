@@ -82,70 +82,68 @@
 
   <body>
     <%- include('./layout/header.ejs') %>
-    <div class="tint">
-      <!----------------------------------------body---------------------------------------------------------------------->
-      <div class="alert">
-        <span
-          class="closebtn"
-          onclick="this.parentElement.style.display='none';"
-          >&times;</span
-        >
-        <strong>Important Info!</strong> Hey User, if you close this window or
-        get logged out due to any technical fault,you will be redirected to this
-        page. Don't worry your login time remains the same.
-      </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div id="content">
-              <h1 id="Greeting" style="font-size: 3em"><%=username%></h1>
-              <h3>Team: <%=bunit%></h3>
-              <h3>Your Shift Timing : <%=shift_time%></h3>
-              <h3 id="info">
-                Your login time is <%=logintime%><br />Your break time is
-                <%=breaktime%><br />
-                Dont forget to logout
-              </h3>
+    <!----------------------------------------body---------------------------------------------------------------------->
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <strong>Important Info!</strong> Hey User, if you close this window or get
+      logged out due to any technical fault,you will be redirected to this page.
+      Don't worry your login time remains the same.
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div id="content">
+            <h1 id="Greeting" style="font-size: 3em"><%=username%></h1>
+            <h3>Team: <%=bunit%></h3>
+            <h3>Your Shift Timing : <%=shift_time%></h3>
+            <h3 id="info">
+              Your login time is <%=logintime%><br />Your break time is
+              <%=breaktime%><br />
+              Dont forget to logout
+            </h3>
 
-              <!-- <br> -->
-              <!-- <button class="btn btn-default btn-lg">Get started <i class="fas fa-user-plus"></i></button> -->
-            </div>
+            <!-- <br> -->
+            <!-- <button class="btn btn-default btn-lg">Get started <i class="fas fa-user-plus"></i></button> -->
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div id="timer">
+            <h3>Want to take a break?</h3>
+            <form action="/break" method="POST" id="myForm">
+              <i class="far fa-clock fa-2x"></i>
+              <input
+                class="elapsed-time-text"
+                type="text"
+                value="00:00:00"
+                name="break"
+                readonly
+              />
+              <button
+                type="button"
+                id="start-button"
+                class="btn btn-dark"
+                *ngIf="displayStartButton"
+                onclick="startStopwatch()"
+              >
+                START
+              </button>
+              <button
+                type="submit"
+                id="stop-button"
+                class="btn btn-dark"
+                *ngIf="!displayStartButton"
+                onclick="stopStopwatch()"
+              >
+                STOP
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-
-    <div id="timer">
-      <h3>Want to take a break?</h3>
-      <form action="/break" method="POST" id="myForm">
-        <i class="far fa-clock fa-2x"></i>
-        <input
-          class="elapsed-time-text"
-          type="text"
-          value="00:00:00"
-          name="break"
-          readonly
-        />
-        <button
-          type="button"
-          id="start-button"
-          class="btn btn-dark"
-          *ngIf="displayStartButton"
-          onclick="startStopwatch()"
-        >
-          START
-        </button>
-        <button
-          type="submit"
-          id="stop-button"
-          class="btn btn-dark"
-          *ngIf="!displayStartButton"
-          onclick="stopStopwatch()"
-        >
-          STOP
-        </button>
-      </form>
     </div>
 
     <!----------------------------------------body---------------------------------------------------------------------->
