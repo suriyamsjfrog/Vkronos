@@ -4,6 +4,7 @@ const manager = require("../models/manager");
 const validCred = require("./validcred");
 const jwt = require("jsonwebtoken");
 const auth = require("../utils/auth");
+const breakdata = require("../models/break");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.post("/", async (req, res) => {
       "Asia Pacific": "6:00 AM to 3:00 PM",
       EMEA: "4:00PM to 1:00 AM",
     };
-
+    let s = await auth(req, res);
     let { email, password } = req.body;
     console.log(req.header["authorization"]);
     let emailData = await logincheck.findemail(email);
@@ -71,6 +72,9 @@ router.post("/", async (req, res) => {
           logintime,
           logoutime
         );
+        let bdata = await breakdata.findbreak(date, email);
+        console.log("This is the breaktime");
+        console.log(bdata);
         let dropdownlist = await manager.dropdownlist(email);
         if (!insertd) {
           let find = await logincheck.finddata(date, email);
@@ -80,20 +84,27 @@ router.post("/", async (req, res) => {
               dropdownVals: dropdownlist,
             });
           } else {
+            console.log(
+              "Inside the userprofile when the person have already logged in",
+              bdata[0].break
+            );
             res.render("user_profile", {
               username: staffdata[0].employee_fullname,
               logintime: find.rows[0].logintime,
               bunit: bunit,
               shift_time: shift_time,
+              breaktime: bdata[0].break,
             });
           }
         } else {
+          console.log("Generating token");
           let token = await jwt.sign(
             {
               email_: email,
               user_name: username,
               login_time: logintime,
               usertype: usertype,
+              currentdate: date,
             },
             "secret",
             {
@@ -118,6 +129,7 @@ router.post("/", async (req, res) => {
               logintime: logintime,
               bunit: bunit,
               shift_time: shift_time,
+              breaktime: bdata[0].break,
             });
           }
         }

@@ -8,6 +8,8 @@ const auth = require("./utils/auth");
 const logout = require("./controller/logout");
 const cookieParser = require("cookie-parser");
 const logincheck = require("./models/logincheck");
+const breakroute = require("./controller/breakroute");
+const breakdata = require("./models/break");
 const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 app.use(cookieParser());
@@ -24,6 +26,7 @@ app.use("/login", login);
 app.use("/signup", signup);
 app.use("/logout", logout);
 app.use("/manager", manager);
+app.use("/break", breakroute);
 
 //app.set('views','./views')
 app.set("views", "./views");
@@ -42,6 +45,10 @@ app.get("/", async (req, res) => {
     let staffdata = await logincheck.findusertype(req.body.email_);
     console.log(staffdata[0].business_unit);
     var bunit = staffdata[0].business_unit;
+    let bdata = await breakdata.findbreak(
+      req.body.currentdate,
+      req.body.email_
+    );
     var shift_time = shift_times[staffdata[0].business_unit];
     let dropdownlist = await dropdown.dropdownlist(req.body.email_);
     console.log(shift_time);
@@ -56,6 +63,7 @@ app.get("/", async (req, res) => {
         logintime: req.body.login_time,
         bunit: bunit,
         shift_time: shift_time,
+        breaktime: bdata[0].break,
       });
     }
   } else {

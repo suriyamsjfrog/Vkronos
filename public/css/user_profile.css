@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@font-face {
+  font-family: "digital-clock-font";
+  src: url("./ds_digital/DS-DIGI.ttf");
+}
 
 html {
   width: 100%;
@@ -6,7 +10,8 @@ html {
 }
 
 body {
-  background: url(https://amica.ua/wp-content/uploads/2020/10/vmw-refresh-hero-banner-bg_1400x500.jpg) no-repeat center center fixed;
+  background: url(https://amica.ua/wp-content/uploads/2020/10/vmw-refresh-hero-banner-bg_1400x500.jpg)
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,7 +22,7 @@ body {
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding-top: 0px;
   padding-bottom: 20px;
   font-weight: 700;
@@ -26,19 +31,19 @@ h1 {
 }
 
 strong {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: medium;
 }
 
 h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: medium;
   color: black;
   font-weight: 700;
 }
 
 #content {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   padding-top: 5%;
   padding-right: 50%;
@@ -46,7 +51,6 @@ h3 {
   /* text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
 				 0px 8px 13px rgba(0,0,0,0.1),
 				 0px 18px 23px rgba(0,0,0,0.1); */
-
 }
 
 .btn-outline-info {
@@ -56,15 +60,19 @@ h3 {
 }
 
 .alert {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding-top: 60px;
   /* background-color: #10c4f1; */
-  background-image: linear-gradient(to left bottom, #00b5ff, #00bef3, #00c4d9, #00c7b4, #19c78a);
+  background-image: linear-gradient(
+    to left bottom,
+    #00b5ff,
+    #00bef3,
+    #00c4d9,
+    #00c7b4,
+    #19c78a
+  );
   color: rgb(10, 10, 10);
-
-
 }
-
 
 .closebtn {
   margin-left: 15px;
@@ -79,4 +87,19 @@ h3 {
 
 .closebtn:hover {
   color: rgb(17, 17, 17);
+}
+
+.elapsed-time-text {
+  font-family: "digital-clock-font";
+  font-size: xx-large;
+  border: 0px solid;
+  /* outline: none; */
+  width: 130px;
+  color: white;
+  background-color: transparent;
+}
+
+#timer {
+  margin-bottom: 700px;
+  margin-left: 70%;
 }

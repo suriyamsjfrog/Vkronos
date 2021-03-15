@@ -14,6 +14,7 @@ async function auth(req, res) {
     req.body.login_time = result.login_time;
     req.body.email_ = result.email_;
     req.body.usertype = result.usertype;
+    req.body.currentdate = result.currentdate;
     console.log("Here inside auth/auth : user type is  : ");
     console.log();
     let val = 1;
@@ -22,6 +23,7 @@ async function auth(req, res) {
     console.log(req.body.login_time, "This is the logintime inside auth");
     console.log(req.body.email_, "This is the email inside auth");
     console.log(req.body.usertype, "This is the email inside auth");
+    console.log(req.body.currentdate, "This is the currentdate");
 
     return val;
   } catch (err) {
