@@ -5,7 +5,7 @@ const validCred = require("./validcred");
 const signup = require("../models/signup");
 router.post("/", async (req, res) => {
   try {
-    let { username, password, cpassword, email } = req.body;
+    let { username, password, cpassword, email, squestion, sanswer } = req.body;
     const isValidated = validCred(email, password, cpassword);
     if (!isValidated.status) {
       let message = isValidated.errors[0].message;
@@ -29,7 +29,14 @@ router.post("/", async (req, res) => {
         console.log("He is a manager");
         Utype = "M";
       }
-      let rowinsert = await signup.insertdata(email, hash, username, Utype);
+      let rowinsert = await signup.insertdata(
+        email,
+        hash,
+        username,
+        Utype,
+        squestion,
+        sanswer
+      );
       if (!rowinsert) {
         console.log("Not inserted");
       } else {

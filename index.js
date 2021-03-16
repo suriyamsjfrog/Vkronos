@@ -10,12 +10,14 @@ const cookieParser = require("cookie-parser");
 const logincheck = require("./models/logincheck");
 const breakroute = require("./controller/breakroute");
 const breakdata = require("./models/break");
+const forgotpass1 = require("./controller/forgotpassword");
 const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 app.use(cookieParser());
 app.use("/css", express.static(__dirname + "public/css"));
 app.use("/js", express.static(__dirname + "public/js"));
 app.use("/img", express.static(__dirname + "public/img"));
+app.use("/views", express.static(__dirname + "views"));
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -27,6 +29,7 @@ app.use("/signup", signup);
 app.use("/logout", logout);
 app.use("/manager", manager);
 app.use("/break", breakroute);
+app.use("/forgot", forgotpass1);
 
 //app.set('views','./views')
 app.set("views", "./views");

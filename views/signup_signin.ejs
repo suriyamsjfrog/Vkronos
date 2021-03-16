@@ -13,14 +13,34 @@
             src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png>
           </a>
           <h1>Create Account</h1>
-          <span>Use your email for registration</span>
+          <!-- <span>Use your email for registration</span> -->
           <input type="text" placeholder="User name" name="username" />
           <input type="email" placeholder="Email" name="email" />
-          <input type="password" placeholder="Password" name="password" />
+          <div class="tooltip">
+            <input type="password" placeholder="Password" name="password" />
+            <span class="tooltiptext"
+              >Your Password must contain atleast 6 Alphabets and 1 numeric
+              value</span
+            >
+          </div>
+
           <input
             type="password"
             placeholder="Repeat Password"
             name="cpassword"
+          />
+
+          <select id="squestion" name="squestion">
+            <option value="" disabled selected>Security question</option>
+            <option value="1">Name of the first school you attended</option>
+            <option value="2">What is your best friend's name</option>
+            <option value="3">what is mother/father's birthdate</option>
+          </select>
+
+          <input
+            type="password"
+            placeholder="Enter your answer"
+            name="sanswer"
           />
           <button>Sign Up</button>
         </form>
@@ -35,6 +55,7 @@
           <span>Use your account</span>
           <input type="User Name" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
+          <a href="/forgot/page">Forgot your password?</a>
           <button>Log In</button>
           <p style="color: red"><%=error%></p>
         </form>
@@ -56,5 +77,29 @@
       </div>
     </div>
     <script src="../js/demo.js"></script>
+    <script>
+      const signUpButton = document.getElementById("signUp");
+      const signInButton = document.getElementById("signIn");
+      const container = document.getElementById("container");
+
+      signUpButton.addEventListener("click", () => {
+        container.classList.add("right-panel-active");
+      });
+
+      signInButton.addEventListener("click", () => {
+        container.classList.remove("right-panel-active");
+      });
+    </script>
+    <script>
+      // var squestion = document.getElementById("squestion");
+      // squestion.keydown(function (e) {
+      //   e.preventDefault();
+      //   return false;
+      // });
+      // function preventInput(evnt) {
+      //   //Checked In IE9,Chrome,FireFox
+      //   if (evnt.which != 9) evnt.preventDefault();
+      // }
+    </script>
   </body>
 </html>
