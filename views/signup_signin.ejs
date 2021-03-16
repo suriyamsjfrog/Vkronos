@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>vKRS</title>
     <link rel="stylesheet" type="text/css" href="../css/demo.css" />
   </head>
   <body>
@@ -31,10 +31,10 @@
           />
 
           <select id="squestion" name="squestion">
-            <option value="" disabled selected>Security question</option>
-            <option value="1">Name of the first school you attended</option>
-            <option value="2">What is your best friend's name</option>
-            <option value="3">what is mother/father's birthdate</option>
+            <option value="" disabled selected>Security question?</option>
+            <option value="1">Name of the first school you attended?</option>
+            <option value="2">What is your best friend's name?</option>
+            <option value="3">what is your mother's maiden name?</option>
           </select>
 
           <input
@@ -55,7 +55,7 @@
           <span>Use your account</span>
           <input type="User Name" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
-          <a href="/forgot/page">Forgot your password?</a>
+          <a href="/forgot/page">Forgot password?</a>
           <button>Log In</button>
           <p style="color: red"><%=error%></p>
         </form>
@@ -64,12 +64,16 @@
         <div class="overlay">
           <div class="overlay-panel overlay-left">
             <!-- <h1>Already a Member?</h1><br> -->
-            <h1><strong>vKronos</strong></h1>
+            <h1>
+              <strong>vKRS<sub style="font-size: small">v1.0</sub></strong>
+            </h1>
             <br />
             <button class="ghost" id="signIn">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
-            <h1><strong>vKronos</strong></h1>
+            <h1>
+              <strong>vKRS<sub style="font-size: small">v1.0</sub></strong>
+            </h1>
             <br />
             <button class="ghost" id="signUp">Sign Up</button>
           </div>

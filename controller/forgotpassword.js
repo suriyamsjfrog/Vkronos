@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const checkcred = require("../models/forgotpasswordmodel");
+const checkmail = require("./checkmail");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
@@ -14,26 +15,33 @@ router.post("/forgotpassword", async (req, res) => {
   let { email, squestion, sanswer } = req.body;
   console.log("Inside forgot check route");
   console.log(email, sanswer, squestion);
-  let count = await checkcred.findandchange(email, squestion, sanswer);
-
-  if (!count) {
-    res.render("forgotpass_form1.ejs", { errlog: "Invalid credentials" });
+  let val = checkmail.isValidmail(email);
+  if (!val) {
+    res.render("forgotpass_form1.ejs", { errlog: "Enter a valid mail" });
   } else {
-    console.log("Generating token");
-    let token_reset = await jwt.sign(
-      {
-        email: email,
-      },
-      "secret",
-      {
-        expiresIn: "1h",
-      }
-    );
-    res.cookie("token_reset", token_reset, {
-      httpOnly: "true",
-      expire: 3600000 + Date.now(),
-    });
-    res.render("forgotpass2.ejs", { errlog: "" });
+    let count = await checkcred.findandchange(email, squestion, sanswer);
+
+    if (!count) {
+      res.render("forgotpass_form1.ejs", {
+        errlog: "Wrong security question/answer",
+      });
+    } else {
+      console.log("Generating token");
+      let token_reset = await jwt.sign(
+        {
+          email: email,
+        },
+        "secret",
+        {
+          expiresIn: "1h",
+        }
+      );
+      res.cookie("token_reset", token_reset, {
+        httpOnly: "true",
+        expire: 3600000 + Date.now(),
+      });
+      res.render("forgotpass2.ejs", { errlog: "" });
+    }
   }
 });
 
@@ -50,7 +58,7 @@ router.post("/resetpass", async (req, res) => {
     var result = jwt.verify(token, "secret");
     let email = result.email;
     if (password != cpassword) {
-      res.render("forgotpass2.ejs", { errlog: "Password missmatch" });
+      res.render("forgotpass2.ejs", { errlog: "Password mismatch" });
     } else {
       salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(password, salt);

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>vKronos</title>
+    <title>vKRS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- CSS only -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
@@ -88,21 +88,33 @@
       <span class="closebtn" onclick="this.parentElement.style.display='none';"
         >&times;</span
       >
-      <strong>Important Info!</strong> Hey User, if you close this window or get
-      logged out due to any technical fault,you will be redirected to this page.
-      Don't worry your login time remains the same.
+      <strong>Important Info!</strong> If this window gets closed, your login
+      time is still recorded. Reopen the application to logout.
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-8">
           <div id="content">
             <h1 id="Greeting" style="font-size: 3em"><%=username%></h1>
-            <h3>Team: <%=bunit%></h3>
-            <h3>Your Shift Timing : <%=shift_time%></h3>
-            <h3 id="info">
-              Your login time is <%=logintime%><br />Your break time is
+            <h3 style="color: rgb(83, 80, 80)">
+              Team: <%=bunit%><br />
+              Your Shift Timing : <%=shift_time%>
+            </h3>
+            <br />
+            <h3 id="info" style="color: rgb(83, 80, 80)">
+              Your login time is <%=logintime%><br />Total break time is
               <%=breaktime%><br />
-              Dont forget to logout
+              <br />
+            </h3>
+            <h3
+              style="
+                color: black;
+                text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2),
+                  0px 8px 13px rgba(0, 0, 0, 0.1),
+                  0px 18px 23px rgba(0, 0, 0, 0.1);
+              "
+            >
+              Dont Forget To "Logout"
             </h3>
 
             <!-- <br> -->

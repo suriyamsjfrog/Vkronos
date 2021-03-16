@@ -10,8 +10,7 @@ html {
 }
 
 body {
-  background: url(https://amica.ua/wp-content/uploads/2020/10/vmw-refresh-hero-banner-bg_1400x500.jpg)
-    no-repeat center center fixed;
+  background: url("../img/bg2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -44,7 +43,7 @@ h3 {
 
 #content {
   font-family: "Montserrat", sans-serif;
-  text-align: center;
+  text-align: left;
   width: 550px;
   margin-top: 5%;
 }
@@ -97,4 +96,5 @@ h3 {
 
 #timer {
   padding-top: 40%;
+  padding-left: 9%;
 }

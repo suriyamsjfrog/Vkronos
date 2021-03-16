@@ -6,7 +6,8 @@
 
 body {
   background: #f6f5f7;
-  background-image: url("https://amica.ua/wp-content/uploads/2020/10/vmw-refresh-hero-banner-bg_1400x500.jpg");
+  /* background-image: url("https://amica.ua/wp-content/uploads/2020/10/vmw-refresh-hero-banner-bg_1400x500.jpg"); */
+  background-image: url("../img/bg8.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
