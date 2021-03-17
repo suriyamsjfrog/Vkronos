@@ -269,7 +269,8 @@
                 </ul>
         </div>
     </nav> -->
-    <h1 style="font-size: 3em;">Welcome<br><%=username%></h1>
+    <h1 style="font-size: 3em; margin-left: 5%; text-align: left;">Welcome <%=username%>,</h1>
+    <p style=" margin-left: 5%;text-align:left; font-size: x-large;">Please find the consolidated report for your team below:</p>
 
 
     <div class="row">
@@ -286,13 +287,14 @@
             <input type="date" id="start" name="Start_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
 
         <div class="col-md-4">
-            <label for="start" style="color: white;">End Date:</label>
+            <label for="start">End Date:</label>
             <input type="date" id="start" name="End_date" value="2021-03-01" min="2021-01-01" max="2030-12-31"></div>
     </div>
     <div class="rstbtn">
         <!-- <input type="submit" class="button" value="REPORT"> -->
-        <button type="submit" class="btn btn-warning btn-lg">Export <i class="fas fa-file-download"></i></button>
+        <button type="submit" class="btn btn-success btn-lg">Export <i class="fas fa-file-download"></i></button>
     </div>
+    <p style="font-size: x-large;  margin-top: 10%; margin-left: 48%;">Thank You</p>
     </form>
     </div>
 </body>

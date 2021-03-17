@@ -11,9 +11,10 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     var shift_times = {
-      ANZ: "4:00 AM to 1:00 PM",
-      "Asia Pacific": "6:00 AM to 3:00 PM",
-      EMEA: "4:00PM to 1:00 AM",
+      ANZ: "4:00 AM to 1:00 PM IST",
+      "Asia Pacific": "6:00 AM to 3:00 PM IST",
+      EMEA: "4:00PM to 1:00 AM IST",
+      SEAK: "6:00 AM to 3:00 PM IST",
     };
     let s = await auth(req, res);
     let { email, password } = req.body;
@@ -57,6 +58,9 @@ router.post("/", async (req, res) => {
           today.getMinutes() +
           ":" +
           today.getSeconds();
+
+        // var logintime = today.getHours() + ":" + today.getMinutes();
+        // var logintime = today.getHours() + ":" + today.getMinutes();
         today.setHours(today.getHours() + 9.15);
         var logoutime =
           today.getHours() +
@@ -65,6 +69,7 @@ router.post("/", async (req, res) => {
           ":" +
           today.getSeconds();
         console.log(date, logintime);
+        // var logoutime = today.getHours() + ":" + today.getMinutes();
         let insertd = await logincheck.insertdata(
           username,
           email,
