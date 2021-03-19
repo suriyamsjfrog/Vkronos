@@ -1,42 +1,88 @@
 <html>
-  <head>
-    <title>vKRS</title>
-    <style>
-      input {
-        background-color: #eee;
-        border: none;
-        padding: 12px 15px;
-        margin: 8px 0;
-        width: 100%;
-      }
-      #squestion {
-        background-color: #eee;
-        border: none;
-        padding: 12px 15px;
-        margin: 8px 0;
-        width: 100%;
-      }
-      #resetform {
-        width: 40%;
-        margin-left: 30%;
-        margin-top: 10%;
-      }
-      #sbutton {
-        margin-left: 40%;
-        margin-top: 3%;
-      }
-    </style>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/7fa4b450dd.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+
+<head>
+  <title>vKRS</title>
+  <style>
+    input {
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    #squestion {
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    #resetform {
+      width: 40%;
+      margin-left: 30%;
+      margin-top: 10%;
+    }
+
+    #sbutton {
+      margin-left: 40%;
+      margin-top: 3%;
+    }
+
+    [data-tip] {
+      position: relative;
+    }
+
+    [data-tip]:before {
+      content: "";
+      /* hides the tooltip when not hovered */
+      display: none;
+      content: "";
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #1a1a1a;
+      position: absolute;
+      top: 30px;
+      left: 35px;
+      z-index: 8;
+      font-size: 0;
+      line-height: 0;
+      width: 0;
+      height: 0;
+    }
+
+    [data-tip]:after {
+      display: none;
+      content: attr(data-tip);
+      position: absolute;
+      top: 35px;
+      left: 0px;
+      padding: 5px 8px;
+      background: #1a1a1a;
+      color: #fff;
+      z-index: 9;
+      font-size: 0.75em;
+      height: 25px;
+      line-height: 18px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      white-space: nowrap;
+      word-wrap: normal;
+    }
+
+    [data-tip]:hover:before,
+    [data-tip]:hover:after {
+      display: block;
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/7fa4b450dd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
       <img src="../img/Vmware.svg" width="200" height="30" alt="vmware-logo" />
@@ -45,10 +91,16 @@
   <div id="resetform">
     <form action="/forgot/resetpass" method="POST">
       <h3 style="margin-left: 21%">Enter New Password</h3>
-      <input type="password" placeholder="Password" name="password" />
+      <div data-tip="Minimum 6 characters, at least one letter and one number.
+      ">
+        <input type="password" placeholder="Password" name="password" />
+      </div>
+      <br />
       <input type="password" placeholder="Confirm Password" name="cpassword" />
       <button type="submit" class="btn btn-dark" id="sbutton">Submit</button>
     </form>
   </div>
   <p style="text-align: center; color: red"><%=errlog%></p>
+</body>
+
 </html>

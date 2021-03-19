@@ -17,7 +17,10 @@ router.post("/", async (req, res) => {
       SEAK: "6:00 AM to 3:00 PM IST",
     };
     let s = await auth(req, res);
-    let { email, password } = req.body;
+    let {
+      email,
+      password
+    } = req.body;
     console.log(req.header["authorization"]);
     let emailData = await logincheck.findemail(email);
     if (emailData.rowCount === 0) {
@@ -103,23 +106,22 @@ router.post("/", async (req, res) => {
           }
         } else {
           console.log("Generating token");
-          let token = await jwt.sign(
-            {
+          let token = await jwt.sign({
               email_: email,
               user_name: username,
               login_time: logintime,
               usertype: usertype,
               currentdate: date,
             },
-            "secret",
-            {
-              expiresIn: "10h",
+            "secret", {
+              expiresIn: "9h",
             }
           );
           console.log(token);
           res.cookie("token", token, {
             httpOnly: "true",
-            expire: 33300000 + Date.now(),
+            // expire: 32400000 + Date.now(),
+            maxAge: 9 * 60 * 60 * 1000 //9 hours
           });
           //res.cookie('token',token).send('cookie set');
           // req.cookies

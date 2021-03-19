@@ -31,7 +31,7 @@ function ValidCred(email, password, cpassword) {
   if (checkPwd)
     errors.push({
       type: "password",
-      message: "Password must be 6 digits long with atleast one numerical",
+      message: "Minimum 6 characters, at least one letter and one number.",
     });
 
   if (checkCPwd)

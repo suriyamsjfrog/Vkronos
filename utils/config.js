@@ -1,11 +1,13 @@
-const { Pool } = require("pg");
+const {
+  Pool
+} = require("pg");
 console.log("inside db config ");
 const config = {
   host: "localhost",
   port: "5432",
   database: "postgres",
   user: "postgres",
-  password: "Sweeti@261203",
+  password: "VMware123!",
 };
 const pool = new Pool(config);
 

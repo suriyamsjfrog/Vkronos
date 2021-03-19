@@ -1,109 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>vKRS</title>
-    <link rel="stylesheet" type="text/css" href="../css/demo.css" />
-  </head>
-  <body>
-    <div class="container" id="container">
-      <div class="form-container sign-up-container">
-        <form action="/signup" method="POST">
-          <a class="navbar-brand"
-            ><img class="img-responsive2"
-            src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png>
-          </a>
-          <h1>Create Account</h1>
+
+<head>
+  <title>vKRS</title>
+  <link rel="icon" href="../img/fav/favicon2.ico" />
+  <link rel="stylesheet" type="text/css" href="../css/demo.css" />
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="/signup" method="POST">
+        <a class="navbar-brand"><img class="img-responsive2"
+            src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png> </a>
+            <h1>Create Account</h1>
           <!-- <span>Use your email for registration</span> -->
-          <input type="text" placeholder="Vmware NT ID" name="username" />
+          <input type="text" placeholder="VMware NT ID" name="username" />
           <input type="email" placeholder="Email" name="email" />
           <div class="tooltip">
             <input type="password" placeholder="Password" name="password" />
-            <span class="tooltiptext"
-              >Your Password must contain atleast 6 Alphabets and 1 numeric
-              value</span
-            >
+            <span class="tooltiptext">Minimum 6 characters, at least one letter and one number.</span>
           </div>
 
-          <input
-            type="password"
-            placeholder="Repeat Password"
-            name="cpassword"
-          />
+          <input type="password" placeholder="Repeat Password" name="cpassword" />
 
           <select id="squestion" name="squestion">
-            <option value="" disabled selected>Security question</option>
-            <option value="1">Name of the first school you attended ?</option>
-            <option value="2">What is your best friend's name ?</option>
-            <option value="3">what is your mother's maiden name ?</option>
+            <option value="" disabled selected>Security Question</option>
+            <option value="1">Name of the first school you attended?</option>
+            <option value="2">What is your best friend's name?</option>
+            <option value="3">What is your mother's maiden name?</option>
           </select>
 
-          <input
-            type="password"
-            placeholder="Enter your answer"
-            name="sanswer"
-          />
+          <input type="password" placeholder="Enter your answer" name="sanswer" />
           <button>Sign Up</button>
-        </form>
-      </div>
-      <div class="form-container sign-in-container">
-        <form action="/login" method="POST">
-          <a class="navbar-brand"
-            ><img class="img-responsive2"
-            src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png>
-          </a>
-          <h1>Sign in</h1>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="/login" method="POST">
+        <a class="navbar-brand"><img class="img-responsive2"
+            src=https://www.vmware.com/etc/clientlibs/vmwaredevapp/clientlib-nav-redesign/images/vm-logo.png> </a>
+            <h1>Sign in</h1>
           <span>Use your account</span>
           <input type="User Name" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
           <a href="/forgot/page">Forgot password?</a>
           <button>Log In</button>
           <p style="color: red"><%=error%></p>
-        </form>
-      </div>
-      <div class="overlay-container">
-        <div class="overlay">
-          <div class="overlay-panel overlay-left">
-            <!-- <h1>Already a Member?</h1><br> -->
-            <h1>
-              <strong>vKRS<sub style="font-size: small">1.0</sub></strong>
-            </h1>
-            <br />
-            <button class="ghost" id="signIn">Sign In</button>
-          </div>
-          <div class="overlay-panel overlay-right">
-            <h1>
-              <strong>vKRS<sub style="font-size: small">1.0</sub></strong>
-            </h1>
-            <br />
-            <button class="ghost" id="signUp">Sign Up</button>
-          </div>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <!-- <h1>Already a Member?</h1><br> -->
+          <h1>
+            <strong>vKRS<span style="font-size: medium"> 1.0</strong></strong>
+          </h1>
+          <br />
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>
+            <strong>vKRS<span style="font-size: medium"> 1.0</strong></strong>
+          </h1>
+          <br />
+          <button class="ghost" id="signUp">Sign Up</button>
         </div>
       </div>
     </div>
-    <script src="../js/demo.js"></script>
-    <script>
-      const signUpButton = document.getElementById("signUp");
-      const signInButton = document.getElementById("signIn");
-      const container = document.getElementById("container");
+  </div>
+  <script src="../js/demo.js"></script>
+  <script>
+    const signUpButton = document.getElementById("signUp");
+    const signInButton = document.getElementById("signIn");
+    const container = document.getElementById("container");
 
-      signUpButton.addEventListener("click", () => {
-        container.classList.add("right-panel-active");
-      });
+    signUpButton.addEventListener("click", () => {
+      container.classList.add("right-panel-active");
+    });
 
-      signInButton.addEventListener("click", () => {
-        container.classList.remove("right-panel-active");
-      });
-    </script>
-    <script>
-      // var squestion = document.getElementById("squestion");
-      // squestion.keydown(function (e) {
-      //   e.preventDefault();
-      //   return false;
-      // });
-      // function preventInput(evnt) {
-      //   //Checked In IE9,Chrome,FireFox
-      //   if (evnt.which != 9) evnt.preventDefault();
-      // }
-    </script>
-  </body>
+    signInButton.addEventListener("click", () => {
+      container.classList.remove("right-panel-active");
+    });
+  </script>
+  <script>
+    // var squestion = document.getElementById("squestion");
+    // squestion.keydown(function (e) {
+    //   e.preventDefault();
+    //   return false;
+    // });
+    // function preventInput(evnt) {
+    //   //Checked In IE9,Chrome,FireFox
+    //   if (evnt.which != 9) evnt.preventDefault();
+    // }
+  </script>
+</body>
+
 </html>

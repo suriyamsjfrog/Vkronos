@@ -36,9 +36,10 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 app.get("/", async (req, res) => {
   var shift_times = {
-    ANZ: "4:00 AM to 1:00 PM",
-    "Asia Pacific": "6:00 AM to 3:00 PM",
+    ANZ: "4:00 AM to 1:00 PM IST",
+    "Asia Pacific": "6:00 AM to 3:00 PM IST",
     EMEA: "4:00PM to 1:00 AM",
+    SEAK: "6:00 AM to 3:00 PM IST"
   };
   console.log("This is it");
   console.log(req.cookies);
@@ -71,7 +72,9 @@ app.get("/", async (req, res) => {
     }
   } else {
     console.log("Hi there");
-    res.render("signup_signin", { error: "" });
+    res.render("signup_signin", {
+      error: ""
+    });
   }
 });
 app.listen(port, () => {

@@ -11,7 +11,7 @@ module.exports.dropdownlist = async (email) => {
     let last_name = get_manager_data.rows[0].last_name;
     let manager_name = last_name + ", " + first_name;
     let results = await pool.query(
-      "select employee_fullname,nt_id from staff_admin where manager_name=$1",
+      "select employee_fullname,nt_id from staff_admin where manager_name=$1 order by employee_fullname",
       [manager_name]
     );
     console.log(results.rows);

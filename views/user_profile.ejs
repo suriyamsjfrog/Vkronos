@@ -1,382 +1,353 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>vKRS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- CSS only -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
-    <link rel="stylesheet" type="text/css" href="../css/user_profile.css" />
-    <style>
-      @media (min-width: 0px) {
-        /* You can add global styles to this file, and also import other style files */
 
-        /* Generic Button */
+<head>
+  <meta charset="utf-8" />
+  <title>vKRS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- CSS only -->
+  <link rel="icon" href="../img/fav/favicon2.ico" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="../css/user_profile.css" />
+  <style>
+    @media (min-width: 0px) {
+      /* You can add global styles to this file, and also import other style files */
 
-        button:disabled {
-          cursor: not-allowed;
-          opacity: 0.5;
-        }
+      /* Generic Button */
 
-        button:focus {
-          outline: none;
-          border: none;
-        }
-
-        button:focus {
-          outline: 0;
-        }
-
-        button:active {
-          outline: none;
-        }
-
-        .hide-element {
-          display: none;
-        }
-
-        .buttons-container {
-          width: 240px;
-          margin-top: 68px;
-          display: -webkit-flex;
-
-          display: -ms-flex;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        #stop-button {
-          display: none;
-        }
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
       }
 
-      /* Medium devices */
-
-      @media (min-width: 768px) {
+      button:focus {
+        outline: none;
+        border: none;
       }
 
-      /* Large devices */
-
-      @media (min-width: 992px) {
+      button:focus {
+        outline: 0;
       }
 
-      /*Ipad pro view*/
+      button:active {
+        outline: none;
+      }
 
-      /*
+      .hide-element {
+        display: none;
+      }
+
+      .buttons-container {
+        width: 240px;
+        margin-top: 68px;
+        display: -webkit-flex;
+
+        display: -ms-flex;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #stop-button {
+        display: none;
+      }
+    }
+
+    /* Medium devices */
+
+    @media (min-width: 768px) {}
+
+    /* Large devices */
+
+    @media (min-width: 992px) {}
+
+    /*Ipad pro view*/
+
+    /*
         @media (min-width: 1024px) {
 
         } */
 
-      /* Extra Large devices */
+    /* Extra Large devices */
 
-      @media (min-width: 1200px) {
-      }
-    </style>
-    <script
-      src="https://kit.fontawesome.com/7fa4b450dd.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+    @media (min-width: 1200px) {}
+  </style>
+  <script src="https://kit.fontawesome.com/7fa4b450dd.js" crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <%- include('./layout/header.ejs') %>
+<body>
+  <%- include('./layout/header.ejs') %>
 
-    <!----------------------------------------body---------------------------------------------------------------------->
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';"
-        >&times;</span
-      >
-      <strong>Important Info!</strong> If this window gets closed, your login
-      time is still recorded. Reopen the application to logout.
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div id="content">
-            <h1 id="Greeting" style="font-size: 2em">Welcome <%=username%>,</h1>
-            <h3 style="color: rgb(83, 80, 80)">
-              Team: <%=bunit%><br />
-              Shift Timing: <%=shift_time%>
-            </h3>
+  <!----------------------------------------body---------------------------------------------------------------------->
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Important Info!</strong> If this window gets closed, your login
+    time is still recorded. Reopen the application to logout.
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="content">
+          <h1 id="Greeting" style="font-size: 2em">Welcome <%=username%>,</h1>
+          <h3 style="color: rgb(83, 80, 80)">
+            Team: <%=bunit%><br />
+            Shift Timing: <%=shift_time%>
+          </h3>
+          <br />
+          <h3 id="info" style="color: rgb(83, 80, 80)">
+            Your login time: <%=logintime%><br />Total break time:
+            <%=breaktime%><br />
             <br />
-            <h3 id="info" style="color: rgb(83, 80, 80)">
-              Your login time: <%=logintime%><br />Total break time:
-              <%=breaktime%><br />
-              <br />
-            </h3>
-            <h3
-              style="
+          </h3>
+          <h3 style="
                 color: black;
                 text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2),
                   0px 8px 13px rgba(0, 0, 0, 0.1),
                   0px 18px 23px rgba(0, 0, 0, 0.1);
-              "
-            >
-              Dont Forget To "Logout"
-            </h3>
+              ">
+            Dont Forget To "Logout"
+          </h3>
 
-            <!-- <br> -->
-            <!-- <button class="btn btn-default btn-lg">Get started <i class="fas fa-user-plus"></i></button> -->
-          </div>
+          <!-- <br> -->
+          <!-- <button class="btn btn-default btn-lg">Get started <i class="fas fa-user-plus"></i></button> -->
         </div>
+      </div>
 
-        <div class="col-md-4">
-          <div id="timer">
-            <h3>Want to take a break?</h3>
-            <form action="/break" method="POST" id="myForm">
-              <i class="far fa-clock fa-2x"></i>
-              <input
-                class="elapsed-time-text"
-                type="text"
-                value="00:00:00"
-                name="break"
-                style="color: black"
-                readonly
-              />
-              <button
-                type="button"
-                id="start-button"
-                class="btn btn-dark"
-                *ngIf="displayStartButton"
-                onclick="startStopwatch()"
-              >
-                START
-              </button>
-              <button
-                type="submit"
-                id="stop-button"
-                class="btn btn-dark"
-                *ngIf="!displayStartButton"
-                onclick="stopStopwatch()"
-              >
-                STOP
-              </button>
-            </form>
-          </div>
+      <div class="col-md-4">
+        <div id="timer">
+          <h3>Want to take a break?</h3>
+          <form action="/break" method="POST" id="myForm">
+            <i class="far fa-clock fa-2x"></i>
+            <input class="elapsed-time-text" type="text" value="00:00:00" name="break" style="color: black" readonly />
+            <button type="button" id="start-button" class="btn btn-dark" *ngIf="displayStartButton"
+              onclick="startStopwatch()">
+              START
+            </button>
+            <button type="submit" id="stop-button" class="btn btn-dark" *ngIf="!displayStartButton"
+              onclick="stopStopwatch()">
+              STOP
+            </button>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-    <!----------------------------------------body---------------------------------------------------------------------->
+  <!----------------------------------------body---------------------------------------------------------------------->
 
-    <!------------------------------------------------------JS---------------------------------------------->
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery-3.4.1.js"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-      crossorigin="anonymous"
-    ></script>
+  <!------------------------------------------------------JS---------------------------------------------->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+  </script>
 
-    <script>
-      var startButton = document.getElementById("start-button");
-      var stopButton = document.getElementById("stop-button");
-      var elapsedTimeText = document.getElementsByClassName(
-        "elapsed-time-text"
-      )[0];
+  <script>
+    var startButton = document.getElementById("start-button");
+    var stopButton = document.getElementById("stop-button");
+    var elapsedTimeText = document.getElementsByClassName(
+      "elapsed-time-text"
+    )[0];
 
-      //Listeners
-      // none
+    //Listeners
+    // none
 
-      /** Displays the start button */
-      function displayStartButton() {
-        // Display start button
-        startButton.style.display = "block";
+    /** Displays the start button */
+    function displayStartButton() {
+      // Display start button
+      startButton.style.display = "block";
 
-        // Hide stop button
-        stopButton.style.display = "none";
-      }
+      // Hide stop button
+      stopButton.style.display = "none";
+    }
 
-      /** Hide the start button */
-      function hideStartButton() {
-        // Hide start button
-        startButton.style.display = "none";
+    /** Hide the start button */
+    function hideStartButton() {
+      // Hide start button
+      startButton.style.display = "none";
 
-        // Display stop button
-        stopButton.style.display = "block";
-      }
+      // Display stop button
+      stopButton.style.display = "block";
+    }
 
-      //Controller
+    //Controller
 
-      /** Stores the reference to the elapsed time interval*/
-      var elapsedTimeIntervalRef;
+    /** Stores the reference to the elapsed time interval*/
+    var elapsedTimeIntervalRef;
 
-      /** Stores the start time of timer */
-      var startTime;
+    /** Stores the start time of timer */
+    var startTime;
 
-      /** Stores the details of elapsed time when paused */
-      var elapsedTimeWhenPaused;
+    /** Stores the details of elapsed time when paused */
+    var elapsedTimeWhenPaused;
 
-      /** Starts the stopwatch */
-      function startStopwatch() {
-        // Set start time based on whether it's stopped or resetted
-        setStartTime();
+    /** Starts the stopwatch */
+    function startStopwatch() {
+      // Set start time based on whether it's stopped or resetted
+      setStartTime();
 
-        // Every second
-        elapsedTimeIntervalRef = setInterval(() => {
-          // Compute the elapsed time & display
-          elapsedTimeText.value = timeAndDateHandling.getElapsedTime(startTime); //pass the actual record start time
+      // Every second
+      elapsedTimeIntervalRef = setInterval(() => {
+        // Compute the elapsed time & display
+        elapsedTimeText.value = timeAndDateHandling.getElapsedTime(startTime); //pass the actual record start time
 
-          // Improvement: Can Stop elapsed time and resert when a maximum elapsed time
-          //              has been reached.
-        }, 1000);
+        // Improvement: Can Stop elapsed time and resert when a maximum elapsed time
+        //              has been reached.
+      }, 1000);
 
-        // Hide the start button, which will be replace by stop
-        hideStartButton();
+      // Hide the start button, which will be replace by stop
+      hideStartButton();
 
-        //Random testing
+      //Random testing
 
-        var auto_refresh = setInterval(function () {
-          submitform();
-        }, 1800000);
-      }
-      function submitform() {
-        // alert("test");
-        document.getElementById("myForm").submit();
-      }
-      /** Sets the start time value */
-      function setStartTime() {
-        if (elapsedTimeWhenPaused) {
-          startTime = new Date();
-          // Subtract the elapsed hours, minutes and seconds from the current date
-          // To get correct elapsed time to resume from it
-          startTime.setHours(
-            startTime.getHours() - elapsedTimeWhenPaused.hours
-          );
-          startTime.setMinutes(
-            startTime.getMinutes() - elapsedTimeWhenPaused.minutes
-          );
-          startTime.setSeconds(
-            startTime.getSeconds() - elapsedTimeWhenPaused.seconds
-          );
-        } else {
-          startTime = new Date();
-        }
-      }
+      var auto_refresh = setInterval(function () {
+        submitform();
+      }, 1800000);
+    }
 
-      /** Pauses stopwatch */
-      function stopStopwatch() {
-        // Clear interval
-        if (typeof elapsedTimeIntervalRef !== "undefined") {
-          clearInterval(elapsedTimeIntervalRef);
-          elapsedTimeIntervalRef = undefined;
-        }
-
-        // Store the elapsed time on pause
-        storeElapsedTimeOnPause();
-
-        // display the start button
-        displayStartButton();
-        //code for reset time
-        resetStopwatch();
-      }
-
-      /** Stores the elapsed time hours, minutes and seconds details
-       * on pause*/
-      function storeElapsedTimeOnPause() {
-        // Break down elapsed time from display test
-        const brokenDownElapsedTime = elapsedTimeText.value.split(":");
-
-        // Convert list to numbers
-        const brokenDownElapsedTimeAsNumbers = brokenDownElapsedTime.map(
-          (numberAsString) => parseInt(numberAsString)
+    function submitform() {
+      // alert("test");
+      document.getElementById("myForm").submit();
+    }
+    /** Sets the start time value */
+    function setStartTime() {
+      if (elapsedTimeWhenPaused) {
+        startTime = new Date();
+        // Subtract the elapsed hours, minutes and seconds from the current date
+        // To get correct elapsed time to resume from it
+        startTime.setHours(
+          startTime.getHours() - elapsedTimeWhenPaused.hours
         );
+        startTime.setMinutes(
+          startTime.getMinutes() - elapsedTimeWhenPaused.minutes
+        );
+        startTime.setSeconds(
+          startTime.getSeconds() - elapsedTimeWhenPaused.seconds
+        );
+      } else {
+        startTime = new Date();
+      }
+    }
 
-        // Store the hours minutes and seconds from that time
-        elapsedTimeWhenPaused = {
-          hours:
-            brokenDownElapsedTimeAsNumbers.length === 3
-              ? brokenDownElapsedTimeAsNumbers[0]
-              : 0,
-          minutes:
-            brokenDownElapsedTimeAsNumbers.length === 3
-              ? brokenDownElapsedTimeAsNumbers[1]
-              : brokenDownElapsedTimeAsNumbers[0],
-          seconds:
-            brokenDownElapsedTimeAsNumbers.length === 3
-              ? brokenDownElapsedTimeAsNumbers[2]
-              : brokenDownElapsedTimeAsNumbers[1],
-        };
+    /** Pauses stopwatch */
+    function stopStopwatch() {
+      // Clear interval
+      if (typeof elapsedTimeIntervalRef !== "undefined") {
+        clearInterval(elapsedTimeIntervalRef);
+        elapsedTimeIntervalRef = undefined;
       }
 
-      /** Resets stopwatch */
-      function resetStopwatch() {
-        // Clear interval
-        if (typeof elapsedTimeIntervalRef !== "undefined") {
-          clearInterval(elapsedTimeIntervalRef);
-          elapsedTimeIntervalRef = undefined;
-        }
+      // Store the elapsed time on pause
+      storeElapsedTimeOnPause();
 
-        // Reset elapsed time when paused object
-        elapsedTimeWhenPaused = undefined;
+      // display the start button
+      displayStartButton();
+      //code for reset time
+      resetStopwatch();
+    }
 
-        // display the start button
-        displayStartButton();
+    /** Stores the elapsed time hours, minutes and seconds details
+     * on pause*/
+    function storeElapsedTimeOnPause() {
+      // Break down elapsed time from display test
+      const brokenDownElapsedTime = elapsedTimeText.value.split(":");
 
-        // Reset elapsed time text
-        elapsedTimeText.innerText = "00:00";
-      }
-    </script>
-    <script>
-      var timeAndDateHandling = {
-        /** Computes the elapsed time since the moment the function is called in the format mm:ss or hh:mm:ss
-         * @param {String} startTime - start time to compute the elapsed time since
-         * @returns {String} elapsed time in mm:ss format or hh:mm:ss format if elapsed hours are 0.
-         */
-        getElapsedTime: function (startTime) {
-          // Record end time
-          let endTime = new Date();
+      // Convert list to numbers
+      const brokenDownElapsedTimeAsNumbers = brokenDownElapsedTime.map(
+        (numberAsString) => parseInt(numberAsString)
+      );
 
-          // Compute time difference in milliseconds
-          let timeDiff = endTime.getTime() - startTime.getTime();
-
-          // Convert time difference from milliseconds to seconds
-          timeDiff = timeDiff / 1000;
-
-          // Extract integer seconds that dont form a minute using %
-          let seconds = Math.floor(timeDiff % 60); //ignoring uncomplete seconds (floor)
-
-          // Pad seconds with a zero if neccessary
-          let secondsAsString = seconds < 10 ? "0" + seconds : seconds + "";
-
-          // Convert time difference from seconds to minutes using %
-          timeDiff = Math.floor(timeDiff / 60);
-
-          // Extract integer minutes that don't form an hour using %
-          let minutes = timeDiff % 60; //no need to floor possible incomplete minutes, becase they've been handled as seconds
-
-          // Pad minutes with a zero if neccessary
-          let minutesAsString = minutes < 10 ? "0" + minutes : minutes + "";
-
-          // Convert time difference from minutes to hours
-          timeDiff = Math.floor(timeDiff / 60);
-
-          // Extract integer hours that don't form a day using %
-          let hours = timeDiff % 24; //no need to floor possible incomplete hours, becase they've been handled as seconds
-
-          // Convert time difference from hours to days
-          timeDiff = Math.floor(timeDiff / 24);
-
-          // The rest of timeDiff is number of days
-          let days = timeDiff;
-
-          let totalHours = hours + days * 24; // add days to hours
-          let totalHoursAsString =
-            totalHours < 10 ? "0" + totalHours : totalHours + "";
-
-          if (totalHoursAsString === "00") {
-            return minutesAsString + ":" + secondsAsString;
-          } else {
-            return (
-              totalHoursAsString + ":" + minutesAsString + ":" + secondsAsString
-            );
-          }
-        },
+      // Store the hours minutes and seconds from that time
+      elapsedTimeWhenPaused = {
+        hours: brokenDownElapsedTimeAsNumbers.length === 3 ?
+          brokenDownElapsedTimeAsNumbers[0] :
+          0,
+        minutes: brokenDownElapsedTimeAsNumbers.length === 3 ?
+          brokenDownElapsedTimeAsNumbers[1] :
+          brokenDownElapsedTimeAsNumbers[0],
+        seconds: brokenDownElapsedTimeAsNumbers.length === 3 ?
+          brokenDownElapsedTimeAsNumbers[2] :
+          brokenDownElapsedTimeAsNumbers[1],
       };
-    </script>
-  </body>
+    }
+
+    /** Resets stopwatch */
+    function resetStopwatch() {
+      // Clear interval
+      if (typeof elapsedTimeIntervalRef !== "undefined") {
+        clearInterval(elapsedTimeIntervalRef);
+        elapsedTimeIntervalRef = undefined;
+      }
+
+      // Reset elapsed time when paused object
+      elapsedTimeWhenPaused = undefined;
+
+      // display the start button
+      displayStartButton();
+
+      // Reset elapsed time text
+      elapsedTimeText.innerText = "00:00";
+    }
+  </script>
+  <script>
+    var timeAndDateHandling = {
+      /** Computes the elapsed time since the moment the function is called in the format mm:ss or hh:mm:ss
+       * @param {String} startTime - start time to compute the elapsed time since
+       * @returns {String} elapsed time in mm:ss format or hh:mm:ss format if elapsed hours are 0.
+       */
+      getElapsedTime: function (startTime) {
+        // Record end time
+        let endTime = new Date();
+
+        // Compute time difference in milliseconds
+        let timeDiff = endTime.getTime() - startTime.getTime();
+
+        // Convert time difference from milliseconds to seconds
+        timeDiff = timeDiff / 1000;
+
+        // Extract integer seconds that dont form a minute using %
+        let seconds = Math.floor(timeDiff % 60); //ignoring uncomplete seconds (floor)
+
+        // Pad seconds with a zero if neccessary
+        let secondsAsString = seconds < 10 ? "0" + seconds : seconds + "";
+
+        // Convert time difference from seconds to minutes using %
+        timeDiff = Math.floor(timeDiff / 60);
+
+        // Extract integer minutes that don't form an hour using %
+        let minutes = timeDiff %
+        60; //no need to floor possible incomplete minutes, becase they've been handled as seconds
+
+        // Pad minutes with a zero if neccessary
+        let minutesAsString = minutes < 10 ? "0" + minutes : minutes + "";
+
+        // Convert time difference from minutes to hours
+        timeDiff = Math.floor(timeDiff / 60);
+
+        // Extract integer hours that don't form a day using %
+        let hours = timeDiff %
+        24; //no need to floor possible incomplete hours, becase they've been handled as seconds
+
+        // Convert time difference from hours to days
+        timeDiff = Math.floor(timeDiff / 24);
+
+        // The rest of timeDiff is number of days
+        let days = timeDiff;
+
+        let totalHours = hours + days * 24; // add days to hours
+        let totalHoursAsString =
+          totalHours < 10 ? "0" + totalHours : totalHours + "";
+
+        if (totalHoursAsString === "00") {
+          return minutesAsString + ":" + secondsAsString;
+        } else {
+          return (
+            totalHoursAsString + ":" + minutesAsString + ":" + secondsAsString
+          );
+        }
+      },
+    };
+  </script>
+</body>
+
 </html>
