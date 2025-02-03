@@ -72,7 +72,7 @@ app.get("/", async (req, res) => {
     }
   } else {
     console.log("Hi there");
-    res.render("signup_signin", {
+    res.render("signup_sign", {
       error: ""
     });
   }
