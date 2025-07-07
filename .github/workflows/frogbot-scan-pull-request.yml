@@ -23,8 +23,9 @@ jobs:
         env:
           # [Mandatory]
           # JFrog platform URL
+          JFROG_CLI_LOG_LEVEL: DEBUG
           JF_URL: ${{ secrets.JF_URL }}
-
+          
           # [Mandatory if JF_USER and JF_PASSWORD are not provided]
           # JFrog access token with 'read' permissions on Xray service
           #JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
@@ -40,6 +41,7 @@ jobs:
           # [Mandatory]
           # The GitHub token is automatically generated for the job
           JF_GIT_TOKEN: ${{ secrets.JF_GIT_TOKEN }}
+          
 
           # [Optional, default: https://api.github.com]
           # API endpoint to GitHub
