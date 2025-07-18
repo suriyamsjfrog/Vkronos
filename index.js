@@ -71,7 +71,7 @@ app.get("/", async (req, res) => {
       });
     }
   } else {
-    console.log("Hi there, this is a test development test for frogbot 1");
+    console.log("Hi there, this is a test development test for frogbot ");
     res.render("signup_sign", {
       error: ""
     });
