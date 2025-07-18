@@ -71,7 +71,7 @@ app.get("/", async (req, res) => {
       });
     }
   } else {
-    console.log("Hi there, this is a test development ");
+    console.log("Hi there, this is a test development test ");
     res.render("signup_sign", {
       error: ""
     });
