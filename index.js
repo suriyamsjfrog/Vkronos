@@ -71,7 +71,7 @@ app.get("/", async (req, res) => {
       });
     }
   } else {
-    console.log("Hi there, this is a test development test fbdhbcor frogbot");
+    console.log("Hi there, this is a test devxbcjhelopment test fbdhbcor frogbot");
     res.render("signup_sign", {
       error: ""
     });
